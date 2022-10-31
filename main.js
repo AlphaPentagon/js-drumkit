@@ -1,12 +1,16 @@
 // grab the key to use as input
 //on press, play sound
-const audio = document.getElementById("kick");
 
-window.addEventListener("keydown", (e) => {
-  playSound(e.key);
+window.addEventListener('keydown', (e) => {
+    playSound(e.key);
+    switch (e.key) {
+        case 'q':
+            playSound();
+    }
 });
 
 function playSound(key) {
-  audio.currentTime = 0;
-  audio.play();
+    const audio = document.getElementById('kick');
+    audio.currentTime = 0;
+    audio.play();
 }
