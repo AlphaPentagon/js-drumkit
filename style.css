@@ -1,14 +1,25 @@
-* {
-  border: 1px solid red;
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.drum-element,
+.drum-container {
+  border: 2px solid black;
 }
 
 .drum-container {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  height: 1000px;
+  grid-column-gap: 4rem;
+  grid-row-gap: 4rem;
+  /* width: min(90%, 900px); */
+  max-width: 100vw;
+  max-height: 60vh;
+
+  padding: 4rem;
 }
 
 .drum-pad-1 {
