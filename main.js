@@ -1,5 +1,11 @@
 // grab the key to use as input
 //on press, play sound
+/*
+doggy solution to the slider size issue
+const sliderc = document.querySelector('.drum-slider-1');
+const slider = document.getElementById('slider1');
+slider.style.width = `${sliderc.clientHeight}px`;
+*/
 const kick = document.getElementById('kick');
 const aahwwaahh = document.getElementById('aahwwaahh');
 const awwyea = document.getElementById('awwyea');
