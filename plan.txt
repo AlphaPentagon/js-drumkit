@@ -1,0 +1,4 @@
+- find an image or make our own in CSS
+- give ID's to each interactive section
+- have them trigger a sound on click / keypress
+- generate new element on each click? so the sample can re-trigger quickly
