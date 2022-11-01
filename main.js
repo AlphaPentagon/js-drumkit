@@ -3,14 +3,29 @@
 
 //instance of Audio API
 const audioCtx = new AudioContext();
+
+//VOLUME
 //this is used to alter the volume
 const volume = audioCtx.createGain();
+//this connects the volume effect to the output (speakers)
 volume.connect(audioCtx.destination);
-
+//link volume knob to volume effect
 const volumeKnob = document.getElementById('volume-knob');
 volumeKnob.addEventListener('input', (e) => {
     console.log(e.target.value);
     volume.gain.value = e.target.value;
+});
+
+//PANNING
+//this is used to create the panning
+const panning = audioCtx.createPanner();
+//this connects the panning effect to the output (speakers)
+panning.connect(audioCtx.destination);
+//link panning knob to panning effect
+const panningKnob = document.getElementById('panning-knob');
+panningKnob.addEventListener('input', (e) => {
+    console.log(e.target.value);
+    panning.positionX.value = e.target.value;
 });
 
 //sounds
@@ -34,8 +49,8 @@ const hiHatSource = audioCtx.createMediaElementSource(hiHat);
 const snareSource = audioCtx.createMediaElementSource(snare);
 const uhhSource = audioCtx.createMediaElementSource(uhh);
 //add volume function from API to sounds
-kickSource.connect(volume);
-aahwwaahhSource.connect(volume);
+kickSource.connect(volume).connect(panning);
+aahwwaahhSource.connect(volume).connect(panning);
 awwyeaSource.connect(volume);
 bowwSource.connect(volume);
 clapSource.connect(volume);
