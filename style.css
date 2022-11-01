@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   display: grid;
   place-items: center;
@@ -10,71 +16,58 @@ body {
 }
 
 .drum-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drum-pad-container {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 4rem;
-  grid-row-gap: 4rem;
+  grid-template-columns: repeat(3, 1fr);
   width: min(90%, 900px);
-  /* height: 600px; */
-  padding: 4rem;
   border-radius: 1rem;
+  gap: 2rem;
+}
+
+.drum-buttons-container {
+  display: flex;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.knob-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.drum-knob-1,
+.drum-knob-2 {
+  width: 2vh;
+  height: 2vh;
 }
 
 .drum-pad {
   border-radius: 1rem;
+  height: 5vh;
+  width: 5vh;
 }
 .drum-pad:not(.pressed):hover {
+  box-sizing: border-box;
   border: 5px solid grey;
 }
-.drum-pad-1 {
-  grid-area: 1 / 1 / 3 / 3;
-}
 
-.drum-pad-4 {
-  grid-area: 3 / 1 / 5 / 3;
-}
-.drum-pad-7 {
-  grid-area: 5 / 1 / 7 / 3;
-}
-.drum-pad-2 {
-  grid-area: 1 / 3 / 3 / 5;
-}
-.drum-pad-5 {
-  grid-area: 3 / 3 / 5 / 5;
-}
-.drum-pad-8 {
-  grid-area: 5 / 3 / 7 / 5;
-}
-.drum-pad-3 {
-  grid-area: 1 / 5 / 3 / 7;
-}
-.drum-pad-6 {
-  grid-area: 3 / 5 / 5 / 7;
-}
-.drum-pad-9 {
-  grid-area: 5 / 5 / 7 / 7;
-}
-.drum-slider-1 {
-  grid-area: 1 / 7 / 4 / 8;
-}
-.drum-slider-2 {
-  grid-area: 4 / 7 / 7 / 8;
-}
-.drum-knob-1 {
-  grid-area: 6 / 8 / 7 / 9;
-}
-.drum-knob-2 {
-  grid-area: 4 / 8 / 5 / 9;
-  border-radius: 50%;
-  width: 5vw;
-  height: 5vw;
-}
 .pressed {
   border: 5px solid hotpink;
 }
 #slider1 {
-  transform: rotate(270deg);
+  /* transform: rotate(270deg); */
 }
 /* The slider itself */
 #slider1 {
@@ -102,10 +95,4 @@ body {
   height: 25px; /* Slider handle height */
   background: #04aa6d; /* Green background */
   cursor: pointer; /* Cursor on hover */
-}
-
-.drum-slider-1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
