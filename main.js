@@ -1,6 +1,3 @@
-// grab the key to use as input
-//on press, play sound
-
 //instance of Audio API
 const audioCtx = new AudioContext();
 
@@ -48,9 +45,9 @@ const goSource = audioCtx.createMediaElementSource(go);
 const hiHatSource = audioCtx.createMediaElementSource(hiHat);
 const snareSource = audioCtx.createMediaElementSource(snare);
 const uhhSource = audioCtx.createMediaElementSource(uhh);
-//add volume function from API to sounds
+//add volume and panning functions from API to sounds (FIXME: Chaining panning onto ONLY 1 source makes panning work on ALL sources)
 kickSource.connect(volume).connect(panning);
-aahwwaahhSource.connect(volume).connect(panning);
+aahwwaahhSource.connect(volume)
 awwyeaSource.connect(volume);
 bowwSource.connect(volume);
 clapSource.connect(volume);
@@ -60,14 +57,18 @@ snareSource.connect(volume);
 uhhSource.connect(volume);
 
 window.addEventListener('keydown', (e) => {
+    // Listen for a key press on the keyboard and play the sound assocaited with that key (if valid)
     if (audioCtx.state === 'suspended') {
+        // Check that on keypress, there has been no user events on the page, and if not, then resume the audio
         audioCtx.resume();
     }
     playSound(e.key.toLowerCase());
 });
 
 window.addEventListener('click', (e) => {
+    // Listen for a click on the page, and play the sound asssociated with the clicked element
     if (audioCtx.state === 'suspended') {
+        // Check that on keypress, there has been no user events on the page, and if not, then resume the audio
         audioCtx.resume();
     }
     console.log('what was clicked:', e.target.id);
@@ -75,6 +76,7 @@ window.addEventListener('click', (e) => {
 });
 
 function activateBorder(className) {
+    // Adds the "pressed" class to the clicked element, and remove it after 500ms. The class makes the element's outline "glow" neon pink
     let pad = document.querySelector(className);
     pad.classList.add('pressed');
     setTimeout(() => {
@@ -83,6 +85,7 @@ function activateBorder(className) {
 }
 
 function playSound(key) {
+    // Plays the sound corresponding to the specified key
     switch (key) {
         case 'q':
             kick.currentTime = 0;
