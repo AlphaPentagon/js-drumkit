@@ -25,6 +25,11 @@ panningKnob.addEventListener('input', (e) => {
     panning.positionX.value = e.target.value;
 });
 
+panningKnob.addEventListener('dblclick', (e) => {
+    e.target.value = 0;
+    panning.positionX.value = e.target.value;
+});
+
 //sounds
 const kick = document.getElementById('kick');
 const aahwwaahh = document.getElementById('aahwwaahh');
@@ -47,7 +52,7 @@ const snareSource = audioCtx.createMediaElementSource(snare);
 const uhhSource = audioCtx.createMediaElementSource(uhh);
 //add volume and panning functions from API to sounds (FIXME: Chaining panning onto ONLY 1 source makes panning work on ALL sources)
 kickSource.connect(volume).connect(panning);
-aahwwaahhSource.connect(volume)
+aahwwaahhSource.connect(volume);
 awwyeaSource.connect(volume);
 bowwSource.connect(volume);
 clapSource.connect(volume);
