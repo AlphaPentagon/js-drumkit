@@ -80,6 +80,16 @@ body {
 }
 #jamdeck {
   filter: drop-shadow(3px 2px 2px #e2e1e1);
+      color: white;
+    text-shadow: 
+    0 0 10px #fff, 
+    0 0 20px #fff, 
+    0 0 30px #fff, 
+    0 0 40px #ff00de,
+    0 0 70px #ff00de, 
+    0 0 80px #ff00de, 
+    0 0 100px #ff00de, 
+    0 0 150px #ff00de;
 }
 
 .drum-pad {
@@ -97,7 +107,15 @@ body {
   border: 5px solid grey;
 }
 .pressed {
-  border: 5px solid hotpink;
+  border: 0.5px solid white;
+  box-shadow: 0 0 10px #fff, 
+  0 0 5px #fff, 
+  0 0 6px #fff, 
+  0 0 8px #ff00de,
+  0 0 14px #ff00de, 
+  0 0 80px #ff00de, 
+  0 0 20px #ff00de, 
+  0 0 35px #ff00de;
 } /* The slider itself */
 #slider1 {
   -webkit-appearance: none; /* Override default CSS styles */
