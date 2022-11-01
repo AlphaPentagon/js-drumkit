@@ -81,17 +81,10 @@ body {
 
 #jamdeck {
   filter: drop-shadow(3px 2px 2px #e2e1e1);
-    color: white;
-    text-shadow: 
-    0 0 10px #e2e1e1, 
-    0 0 20px #e2e1e1, 
-    0 0 30px #e2e1e1, 
-    0 0 26px #ff00de,
-    0 0 46px #ff00de, 
-    0 0 56px #ff00de, 
-    0 0 66px #ff00de, 
+  color: white;
+  text-shadow: 0 0 10px #e2e1e1, 0 0 20px #e2e1e1, 0 0 30px #e2e1e1,
+    0 0 26px #ff00de, 0 0 46px #ff00de, 0 0 56px #ff00de, 0 0 66px #ff00de,
     0 0 100px #ff00de;
-
 }
 
 .drum-pad {
@@ -105,34 +98,20 @@ body {
   background-color: #e2e1e1;
 }
 
-.drum-pad:not(.pressed):hover {
+.drum-pad:not(.pressed):hover,
+.boot-display {
   box-sizing: border-box;
   border: 2px solid white;
-  box-shadow: 
-    0 0 5px #e2e1e1, 
-    0 0 6px #e2e1e1, 
-    0 0 10px #e2e1e1, 
-    0 0 8px greenyellow,
-    0 0 14px greenyellow, 
-    0 0 80px greenyellow,
-    0 0 20px greenyellow,
-    0 0 35px greenyellow;
-  
+  box-shadow: 0 0 5px #e2e1e1, 0 0 6px #e2e1e1, 0 0 10px #e2e1e1,
+    0 0 8px greenyellow, 0 0 14px greenyellow, 0 0 80px greenyellow,
+    0 0 20px greenyellow, 0 0 35px greenyellow;
 }
 
 .pressed {
   border: 0.5px solid white;
-  box-shadow: 
-  0 0 5px #fff, 
-  0 0 6px #fff, 
-  0 0 10px #fff, 
-  0 0 8px #ff00de,
-  0 0 14px #ff00de, 
-  0 0 80px #ff00de, 
-  0 0 20px #ff00de, 
-  0 0 35px #ff00de;
-
-} 
+  box-shadow: 0 0 5px #fff, 0 0 6px #fff, 0 0 10px #fff, 0 0 8px #ff00de,
+    0 0 14px #ff00de, 0 0 80px #ff00de, 0 0 20px #ff00de, 0 0 35px #ff00de;
+}
 /* The slider itself */
 #slider1,
 #slider2 {
