@@ -1,84 +1,85 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
 }
 #title-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 #controls {
-  display: flex;
-  margin-bottom: 1rem;
+    display: flex;
+    margin-bottom: 1rem;
 }
 
 #jamdeck {
-  font-family: 'Fredoka One', cursive;
+    font-family: 'Fredoka One', cursive;
 }
 
 .drum-element,
 .drum-container {
-  border: 2px solid black;
+    border: 2px solid black;
 }
 
 .drum-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 25rem;
-  padding: 2rem;
-  border-radius: 50px;
-  gap: 1rem;
-  background-image: url(./Images/walnut.jpg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 25rem;
+    padding: 2rem;
+    border-radius: 50px;
+    gap: 1rem;
+    background-image: url(./Images/walnut.jpg);
 }
 
 .drum-pad-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: min(90%, 900px);
-  border-radius: 1rem;
-  gap: 1rem;
-  height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: min(90%, 900px);
+    border-radius: 1rem;
+    gap: 1rem;
+    height: 100%;
 }
 .drum-buttons-container {
-  display: flex;
-  height: 100%;
+    display: flex;
+    height: 100%;
 }
 
 .slider-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
 }
 .drum-slider-1,
 .drum-slider-2 {
-  transform: rotate(270deg);
+    transform: rotate(270deg);
 }
 .knob-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
 }
 
 .drum-knob-1,
 .drum-knob-2 {
-  /* width: 2vh;
+    /* width: 2vh;
     height: 2vh; */
 }
 #jamdeck {
+
   filter: drop-shadow(3px 2px 2px #e2e1e1);
       color: white;
     text-shadow: 
@@ -90,23 +91,25 @@ body {
     0 0 80px #ff00de, 
     0 0 100px #ff00de, 
     0 0 150px #ff00de;
+
 }
 
 .drum-pad {
-  font-family: 'Fredoka One', cursive;
-  border-radius: 1rem;
-  height: 6rem;
-  width: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #e2e1e1;
+    font-family: 'Fredoka One', cursive;
+    border-radius: 1rem;
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2e1e1;
 }
 .drum-pad:not(.pressed):hover {
-  box-sizing: border-box;
-  border: 5px solid grey;
+    box-sizing: border-box;
+    border: 5px solid grey;
 }
 .pressed {
+
   border: 0.5px solid white;
   box-shadow: 0 0 10px #fff, 
   0 0 5px #fff, 
@@ -116,53 +119,58 @@ body {
   0 0 80px #ff00de, 
   0 0 20px #ff00de, 
   0 0 35px #ff00de;
+
 } /* The slider itself */
-#slider1 {
-  -webkit-appearance: none; /* Override default CSS styles */
-  appearance: none;
-  background: #9c9c9c;
-  height: 20px;
+#slider1,
+#slider2 {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    background: #9c9c9c;
+    height: 20px;
 }
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-#slider1::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 60px; /* Slider handle height */
-  background: #e2e1e1; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border: 1px solid black;
-  border-radius: 0.4rem;
-  filter: drop-shadow(-2px 2px 2px black);
+#slider1::-webkit-slider-thumb,
+#slider2::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 60px; /* Slider handle height */
+    background: #e2e1e1; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    filter: drop-shadow(-2px 2px 2px black);
 }
 /* All the same stuff for Firefox */
-#slider1::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 60px; /* Slider handle height */
-  background: #e2e1e1; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border: 1px solid black;
-  border-radius: 0.4rem;
-  filter: drop-shadow(2px 2px 2px black);
+#slider1::-moz-range-thumb,
+#slider2::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 60px; /* Slider handle height */
+    background: #e2e1e1; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    filter: drop-shadow(2px 2px 2px black);
 }
 /* All the same stuff for IE */
-#slider1::-ms-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 60px; /* Slider handle height */
-  background: #e2e1e1; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border: 1px solid black;
-  border-radius: 0.4rem;
-  filter: drop-shadow(2px 2px 2px black);
+#slider1::-ms-thumb,
+#slider2::-ms-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 60px; /* Slider handle height */
+    background: #e2e1e1; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    filter: drop-shadow(2px 2px 2px black);
 }
 
 .input-knob:focus {
-  outline: 0;
+    outline: 0;
 }
 
 .drum-knob-1 {
-  filter: drop-shadow(2px 2px 2px black);
+    filter: drop-shadow(2px 2px 2px black);
 }
 .drum-knob-2 {
-  filter: drop-shadow(2px 2px 2px black);
+    filter: drop-shadow(2px 2px 2px black);
 }
