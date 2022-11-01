@@ -36,6 +36,7 @@ const uhhSource = audioCtx.createMediaElementSource(uhh);
 //add volume function from API to sounds
 kickSource.connect(volume);
 aahwwaahhSource.connect(volume);
+awwyeaSource.connect(volume);
 bowwSource.connect(volume);
 clapSource.connect(volume);
 goSource.connect(volume);
