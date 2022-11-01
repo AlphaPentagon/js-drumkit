@@ -80,6 +80,7 @@ body {
 }
 #jamdeck {
   filter: drop-shadow(3px 2px 2px #e2e1e1);
+
       color: white;
     text-shadow: 
      0 0 10px #e2e1e1, 
@@ -90,6 +91,7 @@ body {
     0 0 56px #ff00de, 
     0 0 66px #ff00de, 
     0 0 100px #ff00de;
+
 }
 
 .drum-pad {
@@ -118,6 +120,7 @@ body {
 }
 .pressed {
   border: 0.5px solid white;
+
   box-shadow: 
   0 0 5px #fff, 
   0 0 6px #fff, 
@@ -127,15 +130,18 @@ body {
   0 0 80px #ff00de, 
   0 0 20px #ff00de, 
   0 0 35px #ff00de;
+
 } /* The slider itself */
-#slider1 {
+#slider1,
+#slider2 {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
   background: #9c9c9c;
   height: 20px;
 }
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-#slider1::-webkit-slider-thumb {
+#slider1::-webkit-slider-thumb,
+#slider2::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
@@ -147,7 +153,8 @@ body {
   filter: drop-shadow(-2px 2px 2px black);
 }
 /* All the same stuff for Firefox */
-#slider1::-moz-range-thumb {
+#slider1::-moz-range-thumb,
+#slider2::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 60px; /* Slider handle height */
   background: #e2e1e1; /* Green background */
@@ -157,7 +164,8 @@ body {
   filter: drop-shadow(2px 2px 2px black);
 }
 /* All the same stuff for IE */
-#slider1::-ms-thumb {
+#slider1::-ms-thumb,
+#slider2::-ms-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 60px; /* Slider handle height */
   background: #e2e1e1; /* Green background */
@@ -167,7 +175,9 @@ body {
   filter: drop-shadow(2px 2px 2px black);
 }
 
-.input-knob:focus {
+.input-knob:focus,
+#slider1:focus,
+#slider2:focus {
   outline: 0;
 }
 
