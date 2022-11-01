@@ -1,15 +1,11 @@
 // grab the key to use as input
 //on press, play sound
-/*
-doggy solution to the slider size issue
-const sliderc = document.querySelector('.drum-slider-1');
-const slider = document.getElementById('slider1');
-slider.style.width = `${sliderc.clientHeight}px`;
-*/
 
+//instance of Audio API
 const audioCtx = new AudioContext();
-
+//this is used to alter the volume
 const volume = audioCtx.createGain();
+volume.connect(audioCtx.destination);
 
 const slider1 = document.getElementById('slider1');
 slider1.addEventListener('input', (e) => {
@@ -17,6 +13,7 @@ slider1.addEventListener('input', (e) => {
   volume.gain.value = e.target.value;
 });
 
+//sounds
 const kick = document.getElementById('kick');
 const aahwwaahh = document.getElementById('aahwwaahh');
 const awwyea = document.getElementById('awwyea');
@@ -26,8 +23,25 @@ const go = document.getElementById('go');
 const hiHat = document.getElementById('hi-hat');
 const snare = document.getElementById('snare');
 const uhh = document.getElementById('uhh');
-
-const source = audioCtx.createMediaElementSource(kick);
+//sounds put into the Audio API
+const kickSource = audioCtx.createMediaElementSource(kick);
+const aahwwaahhSource = audioCtx.createMediaElementSource(aahwwaahh);
+const awwyeaSource = audioCtx.createMediaElementSource(awwyea);
+const bowwSource = audioCtx.createMediaElementSource(boww);
+const clapSource = audioCtx.createMediaElementSource(clap);
+const goSource = audioCtx.createMediaElementSource(go);
+const hiHatSource = audioCtx.createMediaElementSource(hiHat);
+const snareSource = audioCtx.createMediaElementSource(snare);
+const uhhSource = audioCtx.createMediaElementSource(uhh);
+//add volume function from API to sounds
+kickSource.connect(volume);
+aahwwaahhSource.connect(volume);
+bowwSource.connect(volume);
+clapSource.connect(volume);
+goSource.connect(volume);
+hiHatSource.connect(volume);
+snareSource.connect(volume);
+uhhSource.connect(volume);
 
 window.addEventListener('keydown', (e) => {
   if (audioCtx.state === 'suspended') {
@@ -56,17 +70,11 @@ function playSound(key) {
   switch (key) {
     case 'q':
       kick.currentTime = 0;
-
       activateBorder('.drum-pad-1');
-
-      source.connect(volume);
-      volume.connect(audioCtx.destination);
       kick.play();
-
       break;
     case 'w':
       aahwwaahh.currentTime = 0;
-      aahwwaahh.volume = 0.5;
       aahwwaahh.play();
       activateBorder('.drum-pad-2');
       break;
