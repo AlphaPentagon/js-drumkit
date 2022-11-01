@@ -76,33 +76,40 @@ body {
 .pressed {
   border: 5px solid hotpink;
 }
-#slider1 {
-  /* transform: rotate(270deg); */
-}
+
 /* The slider itself */
 #slider1 {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
-  background: #d3d3d3; /* Grey background */
+  background: #9c9c9c;
+  height: 20px;
 }
-/* Mouse-over effects */
-#slider1:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 #slider1::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
+  height: 60px; /* Slider handle height */
+  background: #e2e1e1; /* Green background */
   cursor: pointer; /* Cursor on hover */
+  border: 1px solid black;
+  border-radius: 0.4rem;
 }
-
+/* All the same stuff for Firefox */
 #slider1::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
+  height: 60px; /* Slider handle height */
+  background: #e2e1e1; /* Green background */
   cursor: pointer; /* Cursor on hover */
+  border: 1px solid black;
+  border-radius: 0.4rem;
+}
+/* All the same stuff for IE */
+#slider1::-ms-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 60px; /* Slider handle height */
+  background: #e2e1e1; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border: 1px solid black;
+  border-radius: 0.4rem;
 }
