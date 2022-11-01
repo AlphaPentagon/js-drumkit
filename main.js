@@ -17,7 +17,7 @@ const snare = document.getElementById("snare");
 const uhh = document.getElementById("uhh");
 
 window.addEventListener("keydown", (e) => {
-  playSound(e.key);
+  playSound(e.key.toLowerCase());
 });
 
 window.addEventListener("click", (e) => {
