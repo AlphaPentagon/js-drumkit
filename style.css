@@ -9,12 +9,14 @@ body {
   place-items: center;
   min-height: 100vh;
 }
+
 #title-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
+
 #controls {
   display: flex;
   margin-bottom: 1rem;
@@ -39,6 +41,7 @@ body {
   border-radius: 50px;
   gap: 1rem;
   background-image: url(./Images/walnut.jpg);
+  overflow: hidden;
 }
 
 .drum-pad-container {
@@ -49,6 +52,7 @@ body {
   gap: 1rem;
   height: 100%;
 }
+
 .drum-buttons-container {
   display: flex;
   height: 100%;
@@ -61,10 +65,12 @@ body {
   align-items: center;
   height: 100%;
 }
+
 .drum-slider-1,
 .drum-slider-2 {
   transform: rotate(270deg);
 }
+
 .knob-container {
   display: flex;
   flex-direction: column;
@@ -73,19 +79,13 @@ body {
   gap: 2rem;
 }
 
-.drum-knob-1,
-.drum-knob-2 {
-  /* width: 2vh;
-    height: 2vh; */
-}
 #jamdeck {
   filter: drop-shadow(3px 2px 2px #e2e1e1);
-
-      color: white;
+    color: white;
     text-shadow: 
-     0 0 10px #e2e1e1, 
+    0 0 10px #e2e1e1, 
     0 0 20px #e2e1e1, 
-    /* 0 0 30px #e2e1e1,  */
+    0 0 30px #e2e1e1, 
     0 0 26px #ff00de,
     0 0 46px #ff00de, 
     0 0 56px #ff00de, 
@@ -104,10 +104,11 @@ body {
   align-items: center;
   background-color: #e2e1e1;
 }
+
 .drum-pad:not(.pressed):hover {
   box-sizing: border-box;
   border: 2px solid white;
- box-shadow: 
+  box-shadow: 
     0 0 5px #e2e1e1, 
     0 0 6px #e2e1e1, 
     0 0 10px #e2e1e1, 
@@ -118,9 +119,9 @@ body {
     0 0 35px greenyellow;
   
 }
+
 .pressed {
   border: 0.5px solid white;
-
   box-shadow: 
   0 0 5px #fff, 
   0 0 6px #fff, 
@@ -131,7 +132,8 @@ body {
   0 0 20px #ff00de, 
   0 0 35px #ff00de;
 
-} /* The slider itself */
+} 
+/* The slider itself */
 #slider1,
 #slider2 {
   -webkit-appearance: none; /* Override default CSS styles */
@@ -184,6 +186,7 @@ body {
 .drum-knob-1 {
   filter: drop-shadow(2px 2px 2px black);
 }
+
 .drum-knob-2 {
   filter: drop-shadow(2px 2px 2px black);
 }
