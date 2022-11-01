@@ -17,21 +17,24 @@ document.addEventListener('DOMContentLoaded', function () {
     bootborder('.drum-pad-9');
   }, 1000);
   setTimeout(function () {
+    activateBorder('.drum-pad-9');
+  }, 1400);
+  setTimeout(function () {
     activateBorder('.drum-pad-8');
     activateBorder('.drum-pad-6');
-  }, 1400);
+  }, 1600);
   setTimeout(function () {
     activateBorder('.drum-pad-7');
     activateBorder('.drum-pad-5');
     activateBorder('.drum-pad-3');
-  }, 1600);
+  }, 1800);
   setTimeout(function () {
     activateBorder('.drum-pad-4');
     activateBorder('.drum-pad-2');
-  }, 1800);
+  }, 2000);
   setTimeout(function () {
     activateBorder('.drum-pad-1');
-  }, 2000);
+  }, 2200);
   setTimeout(function () {
     activateBorder('.drum-pad-1');
     activateBorder('.drum-pad-2');
@@ -42,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     activateBorder('.drum-pad-7');
     activateBorder('.drum-pad-8');
     activateBorder('.drum-pad-9');
-  }, 2600);
+  }, 2800);
 });
 
 function bootborder(className) {
