@@ -79,7 +79,18 @@ body {
   align-items: center;
   gap: 2rem;
 }
-
+#oscilloscope {
+  filter: drop-shadow(0px 0px 3px #e2e1e1);
+}
+#canvas-outline {
+  width: 310px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  filter: drop-shadow(2px 2px 2px #e2e1e17e);
+}
 #jamdeck {
   filter: drop-shadow(3px 2px 2px #e2e1e1);
   color: white;
