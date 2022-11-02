@@ -47,13 +47,17 @@ analyser.getByteTimeDomainData(dataArray);
 
 const canvas = document.getElementById("oscilloscope");
 const canvasCtx = canvas.getContext("2d");
+
 function draw() {
+    let colourArr = ["#F00","#f80","#ff0","#0F0","#0ff","#00F","#94f"]
     requestAnimationFrame(draw);
     analyser.getByteTimeDomainData(dataArray);
-    canvasCtx.fillStyle = "rgb(200, 200, 200)";
+    // console.log({dataArray:dataArray})
+    canvasCtx.fillStyle = "rgb(0, 0, 0)";
     canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
     canvasCtx.lineWidth = 2;
-    canvasCtx.strokeStyle = "rgb(0, 0, 0)";
+    // canvasCtx.strokeStyle =colourArr[Math.floor(Math.random()*colourArr.length)];
+    canvasCtx.strokeStyle =audioCtx.state != "running" ? "#fff": colourArr[Math.floor(Math.random()*colourArr.length)];
     canvasCtx.beginPath();
     const sliceWidth = (canvas.width * 1.0) / bufferLength;
     let x = 0;
@@ -106,7 +110,11 @@ function playSound(key) {
         case "q":
             currentDeck[0].currentTime = 0;
             activateBorder(".drum-pad-1");
+            console.log("audioCtx.state: ",audioCtx.state )
             currentDeck[0].play();
+            console.log("audioCtx.state: ",audioCtx.state )
+            setTimeout(()=>{audioCtx.suspend()},currentDeck[0].duration*1000)
+            console.log(currentDeck[0].duration*1000)
             break;
         case "w":
             currentDeck[1].currentTime = 0;

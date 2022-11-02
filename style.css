@@ -24,6 +24,7 @@ body {
 
 #jamdeck {
   font-family: 'Fredoka One', cursive;
+  margin-block: 1.5rem;
 }
 
 .drum-element,
@@ -36,8 +37,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 25rem;
-  padding: 2rem;
+  height: 30rem;
+  padding: 4rem;
   border-radius: 50px;
   gap: 1rem;
   background-image: url(./Images/walnut.jpg);
@@ -164,8 +165,10 @@ body {
 
 .drum-knob-1 {
   filter: drop-shadow(2px 2px 2px black);
+  align-self: flex-start;
 }
 
 .drum-knob-2 {
   filter: drop-shadow(2px 2px 2px black);
+  align-self: flex-start;
 }
