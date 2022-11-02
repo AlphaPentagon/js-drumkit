@@ -70,7 +70,7 @@ window.addEventListener('keydown', (e) => {
     playSound(e.key.toLowerCase());
 });
 
-window.addEventListener('click', (e) => {
+window.addEventListener('mousedown', (e) => {
     // Listen for a click on the page, and play the sound asssociated with the clicked element
     if (audioCtx.state === 'suspended') {
         // Check that on keypress, there has been no user events on the page, and if not, then resume the audio
