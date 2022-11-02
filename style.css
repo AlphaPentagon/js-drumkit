@@ -66,6 +66,8 @@ body {
   border-radius: 50px;
   gap: 1rem;
   background-image: url(./Images/walnut.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
 }
 
