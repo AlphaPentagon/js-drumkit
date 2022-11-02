@@ -57,7 +57,7 @@ function draw() {
     canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
     canvasCtx.lineWidth = 2;
     // canvasCtx.strokeStyle =colourArr[Math.floor(Math.random()*colourArr.length)];
-    canvasCtx.strokeStyle =audioCtx.state != "running" ? "#fff": colourArr[Math.floor(Math.random()*colourArr.length)];
+    canvasCtx.strokeStyle = dataArray.every((e)=>{return e == 128}) ? "#fff": colourArr[Math.floor(Math.random()*colourArr.length)];
     canvasCtx.beginPath();
     const sliceWidth = (canvas.width * 1.0) / bufferLength;
     let x = 0;
@@ -109,12 +109,8 @@ function playSound(key) {
     switch (key) {
         case "q":
             currentDeck[0].currentTime = 0;
-            activateBorder(".drum-pad-1");
-            console.log("audioCtx.state: ",audioCtx.state )
             currentDeck[0].play();
-            console.log("audioCtx.state: ",audioCtx.state )
-            setTimeout(()=>{audioCtx.suspend()},currentDeck[0].duration*1000)
-            console.log(currentDeck[0].duration*1000)
+            activateBorder(".drum-pad-1");
             break;
         case "w":
             currentDeck[1].currentTime = 0;
