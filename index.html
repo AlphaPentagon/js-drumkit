@@ -28,8 +28,10 @@
     <audio src="./samples/uhh.mp3" id="uhh" preload></audio>
 
     <div class="drum-container">
-      <h1 id="jamdeck">JamDeck</h1>
-
+      <div id="title-section">
+        <h1 id="jamdeck">JamDeck</h1>
+        <div id="on-LED" class="turned-off"></div>
+      </div>
       <div id="controls">
         <div class="drum-pad-container">
           <div class="drum-pad-1 drum-pad drum-element" id="q">Q</div>
@@ -102,6 +104,7 @@
                 class="input-switch"
                 data-src="./Images/switch_offon.png"
                 data-diameter="80"
+                id="on-off-switch"
               />
             </div>
           </div>

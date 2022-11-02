@@ -21,10 +21,34 @@ body {
   display: flex;
   margin-bottom: 1rem;
 }
+#title-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#on-LED {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 0.5px solid black;
+  margin-left: auto;
+}
+
+.turned-off {
+  background-color: rgb(121, 4, 4);
+  filter: drop-shadow(1px 1px 1px rgb(51, 50, 50));
+}
+.turned-on {
+  background-color: red;
+  filter: drop-shadow(0px 0px 5px red);
+}
 
 #jamdeck {
   font-family: 'Fredoka One', cursive;
   margin-block: 1.5rem;
+  margin-left: auto;
 }
 
 .drum-element,
@@ -104,11 +128,14 @@ body {
   filter: drop-shadow(2px 2px 2px #e2e1e17e);
 }
 #jamdeck {
-  filter: drop-shadow(3px 2px 2px #e2e1e1);
   color: white;
+}
+
+.jamdeck-on {
   text-shadow: 0 0 10px #e2e1e1, 0 0 20px #e2e1e1, 0 0 30px #e2e1e1,
     0 0 26px #ff00de, 0 0 46px #ff00de, 0 0 56px #ff00de, 0 0 66px #ff00de,
     0 0 100px #ff00de;
+  filter: drop-shadow(3px 2px 2px #e2e1e1);
 }
 
 .drum-pad {
@@ -120,8 +147,12 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #e2e1e1;
+  pointer-events: none;
 }
 
+.active-pad {
+  pointer-events: auto;
+}
 .drum-pad:not(.pressed):hover,
 .boot-display {
   box-sizing: border-box;
@@ -182,7 +213,8 @@ body {
 
 .input-knob:focus,
 #slider1:focus,
-#slider2:focus {
+#slider2:focus,
+#on-off-switch:focus {
   outline: 0;
 }
 
