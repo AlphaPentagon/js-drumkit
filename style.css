@@ -71,13 +71,25 @@ body {
 .drum-slider-2 {
   transform: rotate(270deg);
 }
-
-.knob-container {
+#dial-container {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+.input-switch {
+  align-self: flex-end;
+}
+.interface-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   gap: 2rem;
+}
+#knob-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 #oscilloscope {
   filter: drop-shadow(0px 0px 3px #e2e1e1);

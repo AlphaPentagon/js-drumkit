@@ -66,32 +66,42 @@
               />
             </div>
           </div>
-          <div class="knob-container">
+          <div class="interface-container">
             <div id="canvas-outline">
               <canvas id="oscilloscope"></canvas>
             </div>
-            <div class="drum-knob-1">
+            <div id="dial-container">
+              <div id="knob-container">
+                <div class="drum-knob-1">
+                  <input
+                    id="panning-knob"
+                    step="0.01"
+                    min="-1"
+                    max="1"
+                    type="range"
+                    class="input-knob"
+                    data-bgcolor="#9c9c9c"
+                    data-fgcolor="#e2e1e1"
+                  />
+                </div>
+                <div class="drum-knob-2">
+                  <input
+                    id="volume-knob"
+                    step="0.01"
+                    min="0"
+                    max="5"
+                    type="range"
+                    class="input-knob"
+                    data-bgcolor="#e2e1e1"
+                    data-fgcolor="#9c9c9c"
+                  />
+                </div>
+              </div>
               <input
-                id="panning-knob"
-                step="0.01"
-                min="-1"
-                max="1"
-                type="range"
-                class="input-knob"
-                data-bgcolor="#9c9c9c"
-                data-fgcolor="#e2e1e1"
-              />
-            </div>
-            <div class="drum-knob-2">
-              <input
-                id="volume-knob"
-                step="0.01"
-                min="0"
-                max="5"
-                type="range"
-                class="input-knob"
-                data-bgcolor="#e2e1e1"
-                data-fgcolor="#9c9c9c"
+                type="checkbox"
+                class="input-switch"
+                data-src="./Images/switch_offon.png"
+                data-diameter="80"
               />
             </div>
           </div>
