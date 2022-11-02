@@ -1,4 +1,4 @@
-import { audioCtx, volume, panning } from './main.js';
+import { audioCtx, volume, panning, analyser } from './main.js';
 
 export const nineties = [
     'kick',
@@ -19,8 +19,8 @@ export function loadSounds(arr) {
         audioCtx
             .createMediaElementSource(source)
             .connect(volume)
-            .connect(panning);
-
+            .connect(panning)
+            .connect(analyser);
         sourcesArray.push(source);
     }
     return sourcesArray;
