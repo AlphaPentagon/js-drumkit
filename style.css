@@ -10,52 +10,7 @@ body {
   min-height: 100vh;
 }
 
-#title-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-#controls {
-  display: flex;
-  margin-bottom: 1rem;
-}
-#title-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-#on-LED {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  border: 0.5px solid black;
-  margin-left: auto;
-}
-
-.turned-off {
-  background-color: rgb(121, 4, 4);
-  filter: drop-shadow(1px 1px 1px rgb(51, 50, 50));
-}
-.turned-on {
-  background-color: red;
-  filter: drop-shadow(0px 0px 5px red);
-}
-
-#jamdeck {
-  font-family: 'Fredoka One', cursive;
-  margin-block: 1.5rem;
-  margin-left: auto;
-}
-
-.drum-element,
-.drum-container {
-  border: 2px solid black;
-}
-
+/*Whole JamDeck*/
 .drum-container {
   display: flex;
   flex-direction: column;
@@ -71,6 +26,62 @@ body {
   overflow: hidden;
 }
 
+/*WHAT DOES THIS DO?*/
+#title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*Title*/
+#jamdeck {
+  font-family: 'Fredoka One', cursive;
+  margin-block: 1.5rem;
+  margin-left: auto;
+  color: white;
+}
+#title-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.jamdeck-on {
+  text-shadow: 0 0 10px #e2e1e1, 0 0 20px #e2e1e1, 0 0 30px #e2e1e1,
+    0 0 26px #ff00de, 0 0 46px #ff00de, 0 0 56px #ff00de, 0 0 66px #ff00de,
+    0 0 100px #ff00de;
+  filter: drop-shadow(3px 2px 2px #e2e1e1);
+}
+
+/*LED light*/
+#on-LED {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 0.5px solid black;
+  margin-left: auto;
+}
+.turned-off {
+  background-color: rgb(121, 4, 4);
+  filter: drop-shadow(1px 1px 1px rgb(51, 50, 50));
+}
+.turned-on {
+  background-color: red;
+  filter: drop-shadow(0px 0px 5px red);
+}
+
+/*container for everything but the title and led*/
+#controls {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.drum-element,
+.drum-container {
+  border: 2px solid black;
+}
+
+/*Sets up the grid for drum pads*/
 .drum-pad-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -80,31 +91,40 @@ body {
   height: 100%;
 }
 
-.drum-buttons-container {
+/*drum pad*/
+.drum-pad {
+  font-family: 'Fredoka One', cursive;
+  border-radius: 1rem;
+  height: 6rem;
+  width: 6rem;
   display: flex;
-  height: 100%;
-}
-
-.slider-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  height: 100%;
+  background-color: #e2e1e1;
+  pointer-events: none;
+  /*removes the ability to highlight letter on pad*/
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.active-pad {
+  pointer-events: auto;
+}
+.drum-pad:not(.pressed):hover,
+.boot-display {
+  box-sizing: border-box;
+  border: 2px solid white;
+  box-shadow: 0 0 5px #e2e1e1, 0 0 6px #e2e1e1, 0 0 10px #e2e1e1,
+    0 0 8px greenyellow, 0 0 14px greenyellow, 0 0 80px greenyellow,
+    0 0 20px greenyellow, 0 0 35px greenyellow;
+}
+.pressed {
+  border: 0.5px solid white;
+  box-shadow: 0 0 5px #fff, 0 0 6px #fff, 0 0 10px #fff, 0 0 8px #ff00de,
+    0 0 14px #ff00de, 0 0 80px #ff00de, 0 0 20px #ff00de, 0 0 35px #ff00de;
 }
 
-.drum-slider-1,
-.drum-slider-2 {
-  transform: rotate(270deg);
-}
-#dial-container {
-  display: flex;
-  justify-content: space-between;
-  width: 70%;
-}
-.input-switch {
-  align-self: flex-end;
-}
+/*container for the oscilloscope, slier and knob containers*/
 .interface-container {
   display: flex;
   flex-direction: column;
@@ -112,11 +132,8 @@ body {
   align-items: center;
   gap: 2rem;
 }
-#knob-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+
+/*oscilloscope*/
 #oscilloscope {
   filter: drop-shadow(0px 0px 3px #e2e1e1);
 }
@@ -129,47 +146,53 @@ body {
   background-color: black;
   filter: drop-shadow(2px 2px 2px #e2e1e17e);
 }
-#jamdeck {
-  color: white;
-}
 
-.jamdeck-on {
-  text-shadow: 0 0 10px #e2e1e1, 0 0 20px #e2e1e1, 0 0 30px #e2e1e1,
-    0 0 26px #ff00de, 0 0 46px #ff00de, 0 0 56px #ff00de, 0 0 66px #ff00de,
-    0 0 100px #ff00de;
-  filter: drop-shadow(3px 2px 2px #e2e1e1);
-}
-
-.drum-pad {
-  font-family: 'Fredoka One', cursive;
-  border-radius: 1rem;
-  height: 6rem;
-  width: 6rem;
+/*container for volume and pan dials*/
+.drum-buttons-container {
   display: flex;
-  justify-content: center;
+  height: 100%;
+}
+
+/*container for the sliders*/
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  background-color: #e2e1e1;
-  pointer-events: none;
+  height: 100%;
 }
 
-.active-pad {
-  pointer-events: auto;
-}
-.drum-pad:not(.pressed):hover,
-.boot-display {
-  box-sizing: border-box;
-  border: 2px solid white;
-  box-shadow: 0 0 5px #e2e1e1, 0 0 6px #e2e1e1, 0 0 10px #e2e1e1,
-    0 0 8px greenyellow, 0 0 14px greenyellow, 0 0 80px greenyellow,
-    0 0 20px greenyellow, 0 0 35px greenyellow;
+/*container for volume and pan dials and on/off switch*/
+#dial-container {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
 }
 
-.pressed {
-  border: 0.5px solid white;
-  box-shadow: 0 0 5px #fff, 0 0 6px #fff, 0 0 10px #fff, 0 0 8px #ff00de,
-    0 0 14px #ff00de, 0 0 80px #ff00de, 0 0 20px #ff00de, 0 0 35px #ff00de;
+/*on/off switch alignment*/
+.input-switch {
+  align-self: flex-end;
 }
-/* The slider itself */
+
+/*containers for the volume and pan dials*/
+#knob-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*volume and pan dials*/
+.drum-knob-1,
+.drum-knob-2 {
+  filter: drop-shadow(2px 2px 2px black);
+  align-self: flex-start;
+}
+
+/*both sliders*/
+.drum-slider-1,
+.drum-slider-2 {
+  transform: rotate(270deg);
+}
 #slider1,
 #slider2 {
   -webkit-appearance: none; /* Override default CSS styles */
@@ -213,19 +236,10 @@ body {
   filter: drop-shadow(2px 2px 2px black);
 }
 
+/*removes focus for user */
 .input-knob:focus,
 #slider1:focus,
 #slider2:focus,
 #on-off-switch:focus {
   outline: 0;
-}
-
-.drum-knob-1 {
-  filter: drop-shadow(2px 2px 2px black);
-  align-self: flex-start;
-}
-
-.drum-knob-2 {
-  filter: drop-shadow(2px 2px 2px black);
-  align-self: flex-start;
 }
