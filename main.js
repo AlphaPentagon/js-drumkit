@@ -22,9 +22,16 @@ export const panning = audioCtx.createPanner();
 //this connects the panning effect to the output (speakers)
 panning.connect(audioCtx.destination);
 export const analyser = audioCtx.createAnalyser();
-let currentDeck = loadSounds(nineties);
 
-console.log(currentDeck[0]);
+//DELAY
+//this is used to create the reverb
+export const delay = audioCtx.createDelay(1);
+delay.connect(audioCtx.destination);
+const delaySlider = document.getElementById('slider1');
+delaySlider.addEventListener('input', (e) => {
+  delay.delayTime.value = e.target.value;
+  console.log(delay.delayTime);
+});
 
 //link panning knob to panning effect
 const panningKnob = document.getElementById('panning-knob');
@@ -37,6 +44,7 @@ panningKnob.addEventListener('dblclick', (e) => {
   e.target.value = 0;
   panning.positionX.value = e.target.value;
 });
+let currentDeck = loadSounds(nineties);
 
 //ANALYSER
 //This is used to create the analyser

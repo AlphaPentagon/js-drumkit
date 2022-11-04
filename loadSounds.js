@@ -1,29 +1,30 @@
-import { audioCtx, volume, panning, analyser } from './main.js';
+import { audioCtx, volume, panning, analyser, delay } from './main.js';
 
 export const nineties = [
-    'kick',
-    'aahwwaahh',
-    'awwyea',
-    'boww',
-    'clap',
-    'go',
-    'hiHat',
-    'snare',
-    'uhh',
+  'kick',
+  'aahwwaahh',
+  'awwyea',
+  'boww',
+  'clap',
+  'go',
+  'hiHat',
+  'snare',
+  'uhh',
 ];
 
 export function loadSounds(arr) {
-    let sourcesArray = [];
-    for (let i = 0; i < arr.length; i++) {
-        let source = document.getElementById(arr[i]);
-        audioCtx
-            .createMediaElementSource(source)
-            .connect(volume)
-            .connect(panning)
-            .connect(analyser);
-        sourcesArray.push(source);
-    }
-    return sourcesArray;
+  let sourcesArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    let source = document.getElementById(arr[i]);
+    audioCtx
+      .createMediaElementSource(source)
+      .connect(volume)
+      .connect(panning)
+      .connect(analyser)
+      .connect(delay);
+    sourcesArray.push(source);
+  }
+  return sourcesArray;
 }
 
 //sounds
