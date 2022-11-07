@@ -54,6 +54,12 @@ body {
   filter: drop-shadow(3px 2px 2px #e2e1e1);
 }
 
+#dropdown {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: rgb(5, 49, 7);
+  color: white;
+}
 /*LED light*/
 #on-LED {
   width: 1rem;
