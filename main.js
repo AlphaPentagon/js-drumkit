@@ -1,4 +1,4 @@
-import { loadSounds, nineties, breakbeat } from './loadSounds.js';
+import { loadSounds, nineties, breakbeat , soundBank} from './loadSounds.js';
 import { bootUpDisplay } from './bootupdisplay.js';
 
 //instance of Audio API
@@ -209,17 +209,12 @@ onOffSwitch.addEventListener('click', (e) => {
 //beats loader
 const beatsKnob = document.getElementById('beats-knob');
 let dropdown = document.getElementById('dropdown');
-const preSets = ['nineties', 'breakbeat'];
 beatsKnob.addEventListener('input', (e) => {
-  dropdown.value = preSets[e.target.value];
-  console.log(e.target.value);
-  if (e.target.value == 0) {
-    currentDeck = loadSounds(nineties);
-  }
-  if (e.target.value == 1) {
-    currentDeck = loadSounds(breakbeat);
-  }
-  console.log(currentDeck);
+    console.log({currentDeck})
+  dropdown.value = soundBank[e.target.value].name;
+  currentDeck=loadSounds(soundBank[e.target.value].soundsArr)
+//   soundBank[e.target.value].sourceLoaded = true
+  console.log({currentDeck});
 });
 
 /*
