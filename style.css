@@ -39,6 +39,7 @@ body {
   font-family: 'Fredoka One', cursive;
   margin-block: 1.5rem;
   margin-left: auto;
+  margin-right: auto;
   color: white;
 }
 #title-section {
@@ -57,8 +58,13 @@ body {
 #dropdown {
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: rgb(5, 49, 7);
-  color: white;
+  background-color: rgb(3, 41, 5);
+  color: rgb(64, 233, 21);
+  height: 2rem;
+  width: 8rem;
+  font-size: 1.5rem;
+  text-indent: 0.5rem;
+  font-family: 'VT323', monospace;
 }
 /*LED light*/
 #on-LED {
