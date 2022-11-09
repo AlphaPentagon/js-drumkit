@@ -45,26 +45,71 @@
         <audio src="./samples/breakbeat/Break B-08.wav" id="breakbeat8"></audio>
         <audio src="./samples/breakbeat/Break B-09.wav" id="breakbeat9"></audio>
 
-        <div class="drum-container">
-            <div id="title-section">
-                <select id="dropdown" disabled>
-                    <option value="nineties">Nineties</option>
-                    <option value="breakbeat">Breakbeats</option>
-                </select>
-                <div class="drum-knob-2">
-                    <input
-                        id="beats-knob"
-                        step="1"
-                        min="0"
-                        max="1"
-                        type="range"
-                        class="input-knob"
-                        data-bgcolor="#e2e1e1"
-                        data-fgcolor="#9c9c9c"
-                    />
-                </div>
-                <h1 id="jamdeck">JamDeck</h1>
-                <div id="on-LED" class="turned-off"></div>
+    <div class="drum-container">
+      <div id="title-section">
+        <select id="dropdown" class="d-turned-off" disabled>
+          <option value="nineties">Nineties</option>
+          <option value="breakbeat">Breakbeats</option>
+        </select>
+        <div class="drum-knob-2">
+          <input
+            id="beats-knob"
+            step="1"
+            min="0"
+            max="1"
+            value="0"
+            type="range"
+            list="steplist"
+          />
+          <div class="ticks">
+            <span id="nineties" class="beat-LED turned-off"></span>
+            <span id="breakbeat" class="beat-LED turned-off"></span>
+          </div>
+        </div>
+        <h1 id="jamdeck">JamDeck</h1>
+        <div id="on-LED" class="turned-off"></div>
+      </div>
+      <div id="controls">
+        <div class="drum-pad-container">
+          <div class="drum-pad-1 drum-pad drum-element" id="q">Q</div>
+          <div class="drum-pad-2 drum-pad drum-element" id="w">W</div>
+          <div class="drum-pad-3 drum-pad drum-element" id="e">E</div>
+          <div class="drum-pad-4 drum-pad drum-element" id="a">A</div>
+          <div class="drum-pad-5 drum-pad drum-element" id="s">S</div>
+          <div class="drum-pad-6 drum-pad drum-element" id="d">D</div>
+          <div class="drum-pad-7 drum-pad drum-element" id="z">Z</div>
+          <div class="drum-pad-8 drum-pad drum-element" id="x">X</div>
+          <div class="drum-pad-9 drum-pad drum-element" id="c">C</div>
+        </div>
+
+        <div class="drum-buttons-container">
+          <div class="slider-container">
+            <div class="drum-slider-1">
+              <input
+                id="slider1"
+                class="input-range"
+                value="0"
+                type="range"
+                step="0.01"
+                min="0"
+                max="1"
+              />
+            </div>
+            <div class="drum-slider-2">
+              <input
+                id="slider2"
+                class="input-range"
+                type="range"
+                step="0.01"
+                min="1"
+                max="10"
+              />
+            </div>
+          </div>
+          <div class="interface-container">
+            <div id="canvas-outline">
+              <canvas id="oscilloscope"></canvas>
+
             </div>
             <div id="controls">
                 <div class="drum-pad-container">

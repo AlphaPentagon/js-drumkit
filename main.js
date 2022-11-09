@@ -68,38 +68,41 @@ let JamOn = false;
 
 let currentDeck = loadSounds(nineties);
 function draw() {
-    let colourArr = ['#F00', '#f80', '#ff0', '#0F0', '#0ff', '#00F', '#94f'];
-    if (JamOn) {
-        requestAnimationFrame(draw);
-        analyser.getByteTimeDomainData(dataArray);
-        // console.log({dataArray:dataArray})
-        canvasCtx.fillStyle = 'rgb(5, 49, 7)';
-        canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
-        canvasCtx.lineWidth = 2;
-        // canvasCtx.strokeStyle =colourArr[Math.floor(Math.random()*colourArr.length)];
-        canvasCtx.strokeStyle = dataArray.every((e) => {
-            return e == 128;
-        })
-            ? '#fff'
-            : colourArr[Math.floor(Math.random() * colourArr.length)];
-        canvasCtx.beginPath();
-        const sliceWidth = (canvas.width * 1.0) / bufferLength;
-        let x = 0;
-        for (let i = 0; i < bufferLength; i++) {
-            const v = dataArray[i] / 128.0;
-            const y = (v * canvas.height) / 2;
-            if (i === 0) {
-                canvasCtx.moveTo(x, y);
-            } else {
-                canvasCtx.lineTo(x, y);
-            }
-            x += sliceWidth;
+
+  let colourArr = ['#F00', '#f80', '#ff0', '#0F0', '#0ff', '#00F', '#94f'];
+  if (JamOn) {
+    requestAnimationFrame(draw);
+    analyser.getByteTimeDomainData(dataArray);
+    // console.log({dataArray:dataArray})
+    var style = getComputedStyle(document.body);
+    canvasCtx.fillStyle = style.getPropertyValue('--screen-bg-color');
+    canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+    canvasCtx.lineWidth = 2;
+    // canvasCtx.strokeStyle =colourArr[Math.floor(Math.random()*colourArr.length)];
+    canvasCtx.strokeStyle = dataArray.every((e) => {
+      return e == 128;
+    })
+      ? '#fff'
+      : colourArr[Math.floor(Math.random() * colourArr.length)];
+    canvasCtx.beginPath();
+    const sliceWidth = (canvas.width * 1.0) / bufferLength;
+    let x = 0;
+    for (let i = 0; i < bufferLength; i++) {
+      const v = dataArray[i] / 128.0;
+      const y = (v * canvas.height) / 2;
+      if (i === 0) {
+        canvasCtx.moveTo(x, y);
+      } else {
+        canvasCtx.lineTo(x, y);
+      }
+      x += sliceWidth;
         }
         canvasCtx.lineTo(canvas.width, canvas.height / 2);
         canvasCtx.stroke();
     } else {
         canvasCtx.fillStyle = 'rgb(0, 0, 0)';
         canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+
     }
 }
 
@@ -192,47 +195,50 @@ function playSound(key) {
 
 //on-LED function to light up
 const onOffSwitch = document.getElementById('on-off-switch');
+let dropdown = document.getElementById('dropdown');
 const onLED = document.getElementById('on-LED');
 const JAM = document.getElementById('jamdeck');
 const dPad = document.querySelectorAll('.drum-pad');
 onOffSwitch.addEventListener('click', (e) => {
-    if (!onLED.classList.contains('turned-on')) {
-        onLED.classList.add('turned-on');
-        JAM.classList.add('jamdeck-on');
-        bootUpDisplay();
-        JamOn = true;
-        draw();
-        console.log(dPad);
-        dPad.forEach((item) => {
-            item.classList.add('active-pad');
-        });
-    } else {
-        onLED.classList.remove('turned-on');
-        JAM.classList.remove('jamdeck-on');
-        JamOn = false;
-        dPad.forEach((item) => {
-            item.classList.remove('active-pad');
-        });
-    }
+  if (!onLED.classList.contains('turned-on')) {
+    powerUp();
+  } else {
+    powerOff();
+  }
 });
+
+function powerUp() {
+  onLED.classList.add('turned-on');
+  JAM.classList.add('jamdeck-on');
+  dropdown.classList.add('d-turned-on');
+  bootUpDisplay();
+  document.getElementById(dropdown.value).classList.add('turned-on');
+  JamOn = true;
+  draw();
+  console.log(dPad);
+  dPad.forEach((item) => {
+    item.classList.add('active-pad');
+  });
+}
+
+function powerOff() {
+  onLED.classList.remove('turned-on');
+  JAM.classList.remove('jamdeck-on');
+  dropdown.classList.remove('d-turned-on');
+  JamOn = false;
+  document.getElementById(dropdown.value).classList.remove('turned-on');
+  dPad.forEach((item) => {
+    item.classList.remove('active-pad');
+  });
+}
 
 //beats loader
 const beatsKnob = document.getElementById('beats-knob');
-let dropdown = document.getElementById('dropdown');
 beatsKnob.addEventListener('input', (e) => {
-    console.log({ currentDeck });
-    dropdown.value = soundBank[e.target.value].name;
+  document.getElementById(dropdown.value).classList.remove('turned-on');
+  dropdown.value = soundBank[e.target.value].name;
+  if (JamOn) {
+    document.getElementById(dropdown.value).classList.add('turned-on');
+    }
     currentDeck = loadSounds(soundBank[e.target.value].soundsArr);
-    //   soundBank[e.target.value].sourceLoaded = true
-    console.log({ currentDeck });
 });
-
-/*
-
-dropdown.addEventListener('input', (e) => {
-  console.log(e.target.value);
-  if (e.target.value === 'Breakbeats') {
-    currentDeck = loadSounds(breakbeat);
-  }
-});
-*/
