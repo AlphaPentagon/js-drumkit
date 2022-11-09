@@ -1,6 +1,17 @@
 :root {
   --screen-bg-color: rgb(3, 41, 5);
   --screen-text-color: rgb(64, 233, 21);
+  --knob-color: #e2e1e1;
+  --JamDeck-pink: #ff00de;
+  --hover-color: greenyellow;
+  --drum-slider-grove-color: #9c9c9c;
+  --beat-led-color: rgb(0, 87, 14);
+  --beat-led-on-color: rgb(119, 216, 9);
+  --beat-led-on-centre-color: rgb(183, 253, 102);
+  --led-shadow: rgb(51, 50, 50);
+  --power-led-color: rgb(121, 4, 4);
+  --power-led-on-color: red;
+  --power-led-center-color: rgb(255, 71, 47);
 }
 @font-face {
   font-family: 'custom-main';
@@ -45,9 +56,8 @@ body {
 #jamdeck {
   font-family: 'Fredoka One', cursive;
   margin-block: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
   color: white;
+  margin-left: 3.3rem;
 }
 #title-section {
   display: flex;
@@ -55,11 +65,13 @@ body {
   align-items: center;
   width: 100%;
 }
+
 .jamdeck-on {
-  text-shadow: 0 0 10px #e2e1e1, 0 0 20px #e2e1e1, 0 0 30px #e2e1e1,
-    0 0 26px #ff00de, 0 0 46px #ff00de, 0 0 56px #ff00de, 0 0 66px #ff00de,
-    0 0 100px #ff00de;
-  filter: drop-shadow(3px 2px 2px #e2e1e1);
+  text-shadow: 0 0 10px var(--knob-color), 0 0 20px var(--knob-color),
+    0 0 30px var(--knob-color), 0 0 26px var(--JamDeck-pink),
+    0 0 46px var(--JamDeck-pink), 0 0 56px var(--JamDeck-pink),
+    0 0 66px var(--JamDeck-pink), 0 0 100px var(--JamDeck-pink);
+  filter: drop-shadow(3px 2px 2px var(--knob-color));
 }
 
 #dropdown {
@@ -76,7 +88,7 @@ body {
   background-color: black;
 }
 .d-turned-on {
-  color: rgb(64, 233, 21);
+  color: var(--screen-text-color);
   background-color: var(--screen-bg-color);
 }
 /*LED light*/
@@ -88,12 +100,15 @@ body {
   margin-left: auto;
 }
 .turned-off {
-  background-color: rgb(121, 4, 4);
-  filter: drop-shadow(1px 1px 1px rgb(51, 50, 50));
+  background-color: var(--power-led-color);
+  filter: drop-shadow(1px 1px 1px var(--led-shadow));
 }
 .turned-on {
-  background-color: red;
-  filter: drop-shadow(0px 0px 5px red);
+  background: radial-gradient(
+    var(--power-led-center-color),
+    var(--power-led-on-color)
+  );
+  filter: drop-shadow(0px 0px 5px var(--power-led-on-color));
 }
 
 /*container for everything but the title and led*/
@@ -125,7 +140,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e2e1e1;
+  background-color: var(--knob-color);
   pointer-events: none;
   /*removes the ability to highlight letter on pad*/
   -webkit-user-select: none; /* Safari */
@@ -139,14 +154,17 @@ body {
 .boot-display {
   box-sizing: border-box;
   border: 2px solid white;
-  box-shadow: 0 0 5px #e2e1e1, 0 0 6px #e2e1e1, 0 0 10px #e2e1e1,
-    0 0 8px greenyellow, 0 0 14px greenyellow, 0 0 80px greenyellow,
-    0 0 20px greenyellow, 0 0 35px greenyellow;
+  box-shadow: 0 0 5px var(--knob-color), 0 0 6px var(--knob-color),
+    0 0 10px var(--knob-color), 0 0 8px var(--hover-color),
+    0 0 14px var(--hover-color), 0 0 80px var(--hover-color),
+    0 0 20px var(--hover-color), 0 0 35px var(--hover-color);
 }
 .pressed {
   border: 0.5px solid white;
-  box-shadow: 0 0 5px #fff, 0 0 6px #fff, 0 0 10px #fff, 0 0 8px #ff00de,
-    0 0 14px #ff00de, 0 0 80px #ff00de, 0 0 20px #ff00de, 0 0 35px #ff00de;
+  box-shadow: 0 0 5px #fff, 0 0 6px #fff, 0 0 10px #fff,
+    0 0 8px var(--JamDeck-pink), 0 0 14px var(--JamDeck-pink),
+    0 0 80px var(--JamDeck-pink), 0 0 20px var(--JamDeck-pink),
+    0 0 35px var(--JamDeck-pink);
 }
 
 /*container for the oscilloscope, slier and knob containers*/
@@ -160,7 +178,7 @@ body {
 
 /*oscilloscope*/
 #oscilloscope {
-  filter: drop-shadow(0px 0px 3px #e2e1e1);
+  filter: drop-shadow(0px 0px 3px var(--knob-color));
 }
 #canvas-outline {
   width: 310px;
@@ -169,7 +187,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: black;
-  filter: drop-shadow(2px 2px 2px #e2e1e17e);
+  filter: drop-shadow(2px 2px 2px var(--knob-color) 7e);
 }
 
 /*container for volume and pan dials*/
@@ -225,7 +243,7 @@ body {
 #slider2 {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
-  background: #9c9c9c;
+  background: var(--drum-slider-grove-color);
   height: 20px;
 }
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
@@ -235,7 +253,7 @@ body {
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 60px; /* Slider handle height */
-  background: #e2e1e1; /* Green background */
+  background: var(--knob-color); /* Green background */
   cursor: pointer; /* Cursor on hover */
   border: 1px solid black;
   border-radius: 0.4rem;
@@ -246,7 +264,7 @@ body {
 #slider2::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 60px; /* Slider handle height */
-  background: #e2e1e1; /* Green background */
+  background: var(--knob-color); /* Green background */
   cursor: pointer; /* Cursor on hover */
   border: 1px solid black;
   border-radius: 0.4rem;
@@ -257,7 +275,7 @@ body {
 #slider2::-ms-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 60px; /* Slider handle height */
-  background: #e2e1e1; /* Green background */
+  background: var(--knob-color); /* Green background */
   cursor: pointer; /* Cursor on hover */
   border: 1px solid black;
   border-radius: 0.4rem;
@@ -268,7 +286,8 @@ body {
 .input-knob:focus,
 #slider1:focus,
 #slider2:focus,
-#on-off-switch:focus {
+#on-off-switch:focus,
+#beats-knob {
   outline: 0;
 }
 
@@ -288,10 +307,11 @@ body {
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 20px solid #e2e1e1;
+  border-top: 20px solid var(--knob-color);
   filter: drop-shadow(-2px 2px 2px black);
 }
 
+/*holding section for beat leds*/
 .ticks {
   display: flex;
   justify-content: space-between;
@@ -299,6 +319,7 @@ body {
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
+/*beat LED*/
 .beat-LED {
   position: relative;
   display: flex;
@@ -307,4 +328,15 @@ body {
   height: 1rem;
   border-radius: 50%;
   border: 0.5px solid black;
+}
+.beat-turned-off {
+  background-color: var(--beat-led-color);
+  filter: drop-shadow(1px 1px 1px var(--led-shadow));
+}
+.beat-turned-on {
+  filter: drop-shadow(0px 0px 5px var(--beat-led-on-color));
+  background: radial-gradient(
+    var(--beat-led-on-centre-color),
+    var(--beat-led-on-color)
+  );
 }
