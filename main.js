@@ -65,7 +65,8 @@ function draw() {
     requestAnimationFrame(draw);
     analyser.getByteTimeDomainData(dataArray);
     // console.log({dataArray:dataArray})
-    canvasCtx.fillStyle = 'rgb(5, 49, 7)';
+    var style = getComputedStyle(document.body);
+    canvasCtx.fillStyle = style.getPropertyValue('--screen-bg-color');
     canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
     canvasCtx.lineWidth = 2;
     // canvasCtx.strokeStyle =colourArr[Math.floor(Math.random()*colourArr.length)];
@@ -222,22 +223,12 @@ function powerOff() {
 //beats loader
 const beatsKnob = document.getElementById('beats-knob');
 beatsKnob.addEventListener('input', (e) => {
+  document.getElementById(dropdown.value).classList.remove('turned-on');
+  dropdown.value = soundBank[e.target.value].name;
   if (JamOn) {
     document.getElementById(dropdown.value).classList.add('turned-on');
   }
-  document.getElementById(dropdown.value).classList.remove('turned-on');
-  dropdown.value = soundBank[e.target.value].name;
   currentDeck = loadSounds(soundBank[e.target.value].soundsArr);
   //   soundBank[e.target.value].sourceLoaded = true
   console.log(dropdown.value);
 });
-
-/*
-
-dropdown.addEventListener('input', (e) => {
-  console.log(e.target.value);
-  if (e.target.value === 'Breakbeats') {
-    currentDeck = loadSounds(breakbeat);
-  }
-});
-*/

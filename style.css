@@ -1,3 +1,7 @@
+:root {
+  --screen-bg-color: rgb(3, 41, 5);
+  --screen-text-color: rgb(64, 233, 21);
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -70,7 +74,7 @@ body {
 }
 .d-turned-on {
   color: rgb(64, 233, 21);
-  background-color: rgb(3, 41, 5);
+  background-color: var(--screen-bg-color);
 }
 /*LED light*/
 #on-LED {
