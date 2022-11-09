@@ -58,7 +58,6 @@ body {
 #dropdown {
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: rgb(3, 41, 5);
   height: 2rem;
   width: 8rem;
   font-size: 1.5rem;
@@ -66,10 +65,12 @@ body {
   font-family: 'VT323', monospace;
 }
 .d-turned-off {
-  color: rgb(3, 41, 5);
+  color: black;
+  background-color: black;
 }
 .d-turned-on {
   color: rgb(64, 233, 21);
+  background-color: rgb(3, 41, 5);
 }
 /*LED light*/
 #on-LED {
@@ -204,6 +205,9 @@ body {
   filter: drop-shadow(2px 2px 2px black);
   align-self: flex-start;
 }
+.drum-knob-2 {
+  height: 100%;
+}
 
 /*both sliders*/
 .drum-slider-1,
@@ -284,6 +288,7 @@ body {
 .ticks {
   display: flex;
   justify-content: space-between;
+  padding-top: 1rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
