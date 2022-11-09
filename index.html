@@ -47,7 +47,7 @@
 
     <div class="drum-container">
       <div id="title-section">
-        <select id="dropdown" disabled>
+        <select id="dropdown" class="d-turned-off" disabled>
           <option value="nineties">Nineties</option>
           <option value="breakbeat">Breakbeats</option>
         </select>
@@ -57,11 +57,14 @@
             step="1"
             min="0"
             max="1"
+            value="0"
             type="range"
-            class="input-knob"
-            data-bgcolor="#e2e1e1"
-            data-fgcolor="#9c9c9c"
+            list="steplist"
           />
+          <div class="ticks">
+            <span id="nineties" class="beat-LED turned-off"></span>
+            <span id="breakbeat" class="beat-LED turned-off"></span>
+          </div>
         </div>
         <h1 id="jamdeck">JamDeck</h1>
         <div id="on-LED" class="turned-off"></div>

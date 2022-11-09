@@ -1,4 +1,4 @@
-import { loadSounds, nineties, breakbeat , soundBank} from './loadSounds.js';
+import { loadSounds, nineties, breakbeat, soundBank } from './loadSounds.js';
 import { bootUpDisplay } from './bootupdisplay.js';
 
 //instance of Audio API
@@ -182,39 +182,54 @@ function playSound(key) {
 
 //on-LED function to light up
 const onOffSwitch = document.getElementById('on-off-switch');
+let dropdown = document.getElementById('dropdown');
 const onLED = document.getElementById('on-LED');
 const JAM = document.getElementById('jamdeck');
 const dPad = document.querySelectorAll('.drum-pad');
 onOffSwitch.addEventListener('click', (e) => {
   if (!onLED.classList.contains('turned-on')) {
-    onLED.classList.add('turned-on');
-    JAM.classList.add('jamdeck-on');
-    bootUpDisplay();
-    JamOn = true;
-    draw();
-    console.log(dPad);
-    dPad.forEach((item) => {
-      item.classList.add('active-pad');
-    });
+    powerUp();
   } else {
-    onLED.classList.remove('turned-on');
-    JAM.classList.remove('jamdeck-on');
-    JamOn = false;
-    dPad.forEach((item) => {
-      item.classList.remove('active-pad');
-    });
+    powerOff();
   }
 });
 
+function powerUp() {
+  onLED.classList.add('turned-on');
+  JAM.classList.add('jamdeck-on');
+  dropdown.classList.add('d-turned-on');
+  bootUpDisplay();
+  document.getElementById(dropdown.value).classList.add('turned-on');
+  JamOn = true;
+  draw();
+  console.log(dPad);
+  dPad.forEach((item) => {
+    item.classList.add('active-pad');
+  });
+}
+
+function powerOff() {
+  onLED.classList.remove('turned-on');
+  JAM.classList.remove('jamdeck-on');
+  dropdown.classList.remove('d-turned-on');
+  JamOn = false;
+  document.getElementById(dropdown.value).classList.remove('turned-on');
+  dPad.forEach((item) => {
+    item.classList.remove('active-pad');
+  });
+}
+
 //beats loader
 const beatsKnob = document.getElementById('beats-knob');
-let dropdown = document.getElementById('dropdown');
 beatsKnob.addEventListener('input', (e) => {
-    console.log({currentDeck})
+  if (JamOn) {
+    document.getElementById(dropdown.value).classList.add('turned-on');
+  }
+  document.getElementById(dropdown.value).classList.remove('turned-on');
   dropdown.value = soundBank[e.target.value].name;
-  currentDeck=loadSounds(soundBank[e.target.value].soundsArr)
-//   soundBank[e.target.value].sourceLoaded = true
-  console.log({currentDeck});
+  currentDeck = loadSounds(soundBank[e.target.value].soundsArr);
+  //   soundBank[e.target.value].sourceLoaded = true
+  console.log(dropdown.value);
 });
 
 /*
