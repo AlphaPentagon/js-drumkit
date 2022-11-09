@@ -3,11 +3,11 @@
 Team project to build a retro styled dum machine
 
 ## Todo:
-+ Add effects to the 2 currently unused sliders (pitch being one)
-+ Add labels to the sliders + dials
-+ Add glowing icon of JamDeck
-+ Get a nicer theme selector dial/ switcher
-+ Better samples
++ [ ] Add effects to the 2 currently unused sliders (pitch being one)
++ [~] Add labels to the sliders + dials
++ [ ] Add glowing icon of JamDeck
++ [ ] Get a nicer theme selector dial/ switcher
++ [ ] Better samples
 
 
 ## Stretch goals:

@@ -37,15 +37,13 @@ body {
     align-items: center;
     gap: 1rem;
 }
-
 /*Title*/
 #jamdeck {
-    font-family: "custom-main";
+    font-family: 'Fredoka One', cursive;
     margin-block: 1.5rem;
     margin-left: auto;
     margin-right: auto;
-    /* color: black; */
-    /* background-color: darkblue; */
+    color: white;
 }
 #title-section {
     display: flex;

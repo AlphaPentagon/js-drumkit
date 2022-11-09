@@ -21,7 +21,7 @@ volumeKnob.addEventListener('input', (e) => {
 export const panning = audioCtx.createPanner();
 //this connects the panning effect to the output (speakers)
 panning.connect(audioCtx.destination);
-export const analyser = audioCtx.createAnalyser();
+
 
 //DELAY
 //this is used to create the reverb
@@ -45,11 +45,11 @@ panningKnob.addEventListener('dblclick', (e) => {
   panning.positionX.value = e.target.value;
 });
 
-let currentDeck = loadSounds(nineties);
+//Pitch
 
 //ANALYSER
 //This is used to create the analyser
-
+export const analyser = audioCtx.createAnalyser();
 analyser.fftSize = 2048;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
@@ -59,6 +59,7 @@ const canvas = document.getElementById('oscilloscope');
 const canvasCtx = canvas.getContext('2d');
 let JamOn = false;
 
+let currentDeck = loadSounds(nineties);
 function draw() {
   let colourArr = ['#F00', '#f80', '#ff0', '#0F0', '#0ff', '#00F', '#94f'];
   if (JamOn) {
