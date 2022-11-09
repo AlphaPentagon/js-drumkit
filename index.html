@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JamDeck</title>
-    <script defer src="./main.js" type="module"></script>
-    <script defer src="./input-knobs.js" type="module"></script>
-    <script defer src="./bootupdisplay.js" type="module"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <audio src="./samples/nineties/kick.wav" id="kick" preload></audio>
-    <audio
-      src="./samples/nineties/aahwwaahh.mp3"
-      id="aahwwaahh"
-      preload
-    ></audio>
-    <audio src="./samples/nineties/awwyea.mp3" id="awwyea" preload></audio>
-    <audio src="./samples/nineties/boww.mp3" id="boww" preload></audio>
-    <audio src="./samples/nineties/clap.wav" id="clap" preload></audio>
-    <audio src="./samples/nineties/go.mp3" id="go" preload></audio>
-    <audio src="./samples/nineties/hi-hat.wav" id="hiHat" preload></audio>
-    <audio src="./samples/nineties/snare.wav" id="snare" preload></audio>
-    <audio src="./samples/nineties/uhh.mp3" id="uhh" preload></audio>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JamDeck</title>
+        <script defer src="./main.js" type="module"></script>
+        <script defer src="./input-knobs.js" type="module"></script>
+        <script defer src="./bootupdisplay.js" type="module"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <audio src="./samples/nineties/kick.wav" id="kick" preload></audio>
+        <audio
+            src="./samples/nineties/aahwwaahh.mp3"
+            id="aahwwaahh"
+            preload
+        ></audio>
+        <audio src="./samples/nineties/awwyea.mp3" id="awwyea" preload></audio>
+        <audio src="./samples/nineties/boww.mp3" id="boww" preload></audio>
+        <audio src="./samples/nineties/clap.wav" id="clap" preload></audio>
+        <audio src="./samples/nineties/go.mp3" id="go" preload></audio>
+        <audio src="./samples/nineties/hi-hat.wav" id="hiHat" preload></audio>
+        <audio src="./samples/nineties/snare.wav" id="snare" preload></audio>
+        <audio src="./samples/nineties/uhh.mp3" id="uhh" preload></audio>
 
-    <audio src="./samples/breakbeat/Break B-01.wav" id="breakbeat1"></audio>
-    <audio src="./samples/breakbeat/Break B-02.wav" id="breakbeat2"></audio>
-    <audio src="./samples/breakbeat/Break B-03.wav" id="breakbeat3"></audio>
-    <audio src="./samples/breakbeat/Break B-04.wav" id="breakbeat4"></audio>
-    <audio src="./samples/breakbeat/Break B-05.wav" id="breakbeat5"></audio>
-    <audio src="./samples/breakbeat/Break B-06.wav" id="breakbeat6"></audio>
-    <audio src="./samples/breakbeat/Break B-07.wav" id="breakbeat7"></audio>
-    <audio src="./samples/breakbeat/Break B-08.wav" id="breakbeat8"></audio>
-    <audio src="./samples/breakbeat/Break B-09.wav" id="breakbeat9"></audio>
+        <audio src="./samples/breakbeat/Break B-01.wav" id="breakbeat1"></audio>
+        <audio src="./samples/breakbeat/Break B-02.wav" id="breakbeat2"></audio>
+        <audio src="./samples/breakbeat/Break B-03.wav" id="breakbeat3"></audio>
+        <audio src="./samples/breakbeat/Break B-04.wav" id="breakbeat4"></audio>
+        <audio src="./samples/breakbeat/Break B-05.wav" id="breakbeat5"></audio>
+        <audio src="./samples/breakbeat/Break B-06.wav" id="breakbeat6"></audio>
+        <audio src="./samples/breakbeat/Break B-07.wav" id="breakbeat7"></audio>
+        <audio src="./samples/breakbeat/Break B-08.wav" id="breakbeat8"></audio>
+        <audio src="./samples/breakbeat/Break B-09.wav" id="breakbeat9"></audio>
 
     <div class="drum-container">
       <div id="title-section">
@@ -109,45 +109,87 @@
           <div class="interface-container">
             <div id="canvas-outline">
               <canvas id="oscilloscope"></canvas>
+
             </div>
-            <div id="dial-container">
-              <div id="knob-container">
-                <div class="drum-knob-1">
-                  <input
-                    id="panning-knob"
-                    step="0.01"
-                    min="-1"
-                    max="1"
-                    type="range"
-                    class="input-knob"
-                    data-bgcolor="#9c9c9c"
-                    data-fgcolor="#e2e1e1"
-                  />
+            <div id="controls">
+                <div class="drum-pad-container">
+                    <div class="drum-pad-1 drum-pad drum-element" id="q">Q</div>
+                    <div class="drum-pad-2 drum-pad drum-element" id="w">W</div>
+                    <div class="drum-pad-3 drum-pad drum-element" id="e">E</div>
+                    <div class="drum-pad-4 drum-pad drum-element" id="a">A</div>
+                    <div class="drum-pad-5 drum-pad drum-element" id="s">S</div>
+                    <div class="drum-pad-6 drum-pad drum-element" id="d">D</div>
+                    <div class="drum-pad-7 drum-pad drum-element" id="z">Z</div>
+                    <div class="drum-pad-8 drum-pad drum-element" id="x">X</div>
+                    <div class="drum-pad-9 drum-pad drum-element" id="c">C</div>
                 </div>
-                <div class="drum-knob-2">
-                  <input
-                    id="volume-knob"
-                    step="0.01"
-                    min="0"
-                    max="5"
-                    type="range"
-                    class="input-knob"
-                    data-bgcolor="#e2e1e1"
-                    data-fgcolor="#9c9c9c"
-                  />
+
+                <div class="drum-buttons-container">
+                    <div class="slider-container">
+                        <div class="drum-slider-1">
+                            <input
+                                id="slider1"
+                                class="input-range"
+                                value="0"
+                                type="range"
+                                step="0.01"
+                                min="0"
+                                max="1"
+                            />
+                        </div>
+                        <div class="drum-slider-2">
+                            <input
+                                id="slider2"
+                                class="input-range"
+                                type="range"
+                                step="0.01"
+                                min="0"
+                                max="1"
+                            />
+                        </div>
+                    </div>
+                    <div class="interface-container">
+                        <div id="canvas-outline">
+                            <canvas id="oscilloscope"></canvas>
+                        </div>
+                        <div id="dial-container">
+                            <div id="knob-container">
+                                <div class="drum-knob-1">
+                                    <input
+                                        id="panning-knob"
+                                        step="0.01"
+                                        min="-1"
+                                        max="1"
+                                        type="range"
+                                        class="input-knob"
+                                        data-bgcolor="#9c9c9c"
+                                        data-fgcolor="#e2e1e1"
+                                    />
+                                </div>
+                                <div class="drum-knob-2">
+                                    <input
+                                        id="volume-knob"
+                                        step="0.01"
+                                        min="0"
+                                        max="5"
+                                        type="range"
+                                        class="input-knob"
+                                        data-bgcolor="#e2e1e1"
+                                        data-fgcolor="#9c9c9c"
+                                    />
+                                </div>
+                            </div>
+                            <input
+                                type="checkbox"
+                                class="input-switch"
+                                data-src="./Images/switch_offon.png"
+                                data-diameter="80"
+                                id="on-off-switch"
+                            />
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <input
-                type="checkbox"
-                class="input-switch"
-                data-src="./Images/switch_offon.png"
-                data-diameter="80"
-                id="on-off-switch"
-              />
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>

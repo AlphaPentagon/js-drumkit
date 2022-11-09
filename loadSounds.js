@@ -1,41 +1,52 @@
-import { audioCtx, volume, panning, analyser, delay } from "./main.js";
+import { audioCtx, volume, panning, analyser, delay, pitch } from './main.js';
 
 export const nineties = [
-    "kick",
-    "aahwwaahh",
-    "awwyea",
-    "boww",
-    "clap",
-    "go",
-    "hiHat",
-    "snare",
-    "uhh",
+    'kick',
+    'aahwwaahh',
+    'awwyea',
+    'boww',
+    'clap',
+    'go',
+    'hiHat',
+    'snare',
+    'uhh',
 ];
 
 export const breakbeat = [
-    "breakbeat1",
-    "breakbeat2",
-    "breakbeat3",
-    "breakbeat4",
-    "breakbeat5",
-    "breakbeat6",
-    "breakbeat7",
-    "breakbeat8",
-    "breakbeat9",
+    'breakbeat1',
+    'breakbeat2',
+    'breakbeat3',
+    'breakbeat4',
+    'breakbeat5',
+    'breakbeat6',
+    'breakbeat7',
+    'breakbeat8',
+    'breakbeat9',
 ];
 export const soundBank = [
-    { name: "nineties", soundsArr: nineties, sourceLoaded: false },
-    { name: "breakbeat", soundsArr: breakbeat, sourceLoaded: false },
+    { name: 'nineties', soundsArr: nineties, sourceLoaded: false },
+    { name: 'breakbeat', soundsArr: breakbeat, sourceLoaded: false },
 ];
 function connectNodeToSource(s) {
     // This function is named appropriately - Only gets called by loadSounds if source (which is a <audio> element) is not already connected to the audio context.
-    audioCtx
-        .createMediaElementSource(s)
-        .connect(volume)
-        .connect(panning)
-        .connect(analyser)
-        .connect(delay);
+    audioCtx.createMediaElementSource(s).connect(volume);
+    volume.connect(panning);
+    panning.connect(analyser);
+    analyser.connect(delay);
+    // delay.connect(pitch);
+    console.log('S', s.src);
+
+    // test(s);
 }
+
+function test(wav) {
+    console.log(typeof wav);
+    console.log(wav);
+    pitch.buffer = wav;
+    pitch.playbackRate.value = document.getElementById('slider2').value;
+    pitch.connect(audioCtx.destination);
+}
+
 export function loadSounds(arr) {
     let soundBankIndex = soundBank.findIndex((elem) => {
         // Finds the index of the soundBank object which the argument arr matches (by the "soundsArr" key)
