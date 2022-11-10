@@ -1,62 +1,62 @@
 import { audioCtx, volume, panning, analyser, delay, source } from './main.js';
 
 export const nineties = [
-    'kick',
-    'aahwwaahh',
-    'awwyea',
-    'boww',
-    'clap',
-    'go',
-    'hiHat',
-    'snare',
-    'uhh',
+  'kick',
+  'aahwwaahh',
+  'awwyea',
+  'boww',
+  'clap',
+  'go',
+  'hiHat',
+  'snare',
+  'uhh',
 ];
 
 export const breakbeat = [
-    'breakbeat1',
-    'breakbeat2',
-    'breakbeat3',
-    'breakbeat4',
-    'breakbeat5',
-    'breakbeat6',
-    'breakbeat7',
-    'breakbeat8',
-    'breakbeat9',
+  'breakbeat1',
+  'breakbeat2',
+  'breakbeat3',
+  'breakbeat4',
+  'breakbeat5',
+  'breakbeat6',
+  'breakbeat7',
+  'breakbeat8',
+  'breakbeat9',
 ];
 export const soundBank = [
-    { name: 'nineties', soundsArr: nineties, sourceLoaded: false },
-    { name: 'breakbeat', soundsArr: breakbeat, sourceLoaded: false },
+  { name: 'nineties', soundsArr: nineties, sourceLoaded: false },
+  { name: 'breakbeat', soundsArr: breakbeat, sourceLoaded: false },
 ];
 function connectNodeToSource(s) {
-    // This function is named appropriately - Only gets called by loadSounds if source (which is a <audio> element) is not already connected to the audio context.
-    audioCtx.createMediaElementSource(s).connect(volume);
-    volume.connect(panning);
-    panning.connect(analyser);
-    analyser.connect(delay);
-    // delay.connect(pitch);
-    console.log('S', s.src);
-    loadSample(s.src).then((sample) => playSample(sample));
+  // This function is named appropriately - Only gets called by loadSounds if source (which is a <audio> element) is not already connected to the audio context.
+  audioCtx.createMediaElementSource(s).connect(volume);
+  volume.connect(panning);
+  panning.connect(analyser);
+  analyser.connect(delay);
+  // delay.connect(pitch);
+  // console.log('S', s.src);
+  // loadSample(s.src).then((sample) => playSample(sample));
 }
 
 async function loadSample(url) {
-    return await fetch(url)
-        .then((response) => response.arrayBuffer())
-        .then((buffer) => audioCtx.decodeAudioData(buffer));
+  return await fetch(url)
+    .then((response) => response.arrayBuffer())
+    .then((buffer) => audioCtx.decodeAudioData(buffer));
 }
 
 export const pitchSlider = document.getElementById('slider2');
 
 pitchSlider.addEventListener('input', (e) => {
-    console.log(e.target.value);
-    source.playbackRate.value = e.target.value;
-    console.log('PITCH VALUE', source.playbackRate.value);
+  console.log(e.target.value);
+  source.playbackRate.value = e.target.value;
+  console.log('PITCH VALUE', source.playbackRate.value);
 });
 
 function playSample(sample) {
-    console.log(sample);
-    source.buffer = sample;
-    source.playbackRate.value = pitchSlider.value;
-    source.connect(audioCtx.destination);
+  console.log(sample);
+  source.buffer = sample;
+  source.playbackRate.value = pitchSlider.value;
+  source.connect(audioCtx.destination);
 }
 
 // function test(wav) {
@@ -68,27 +68,27 @@ function playSample(sample) {
 // }
 
 export function loadSounds(arr) {
-    let soundBankIndex = soundBank.findIndex((elem) => {
-        // Finds the index of the soundBank object which the argument arr matches (by the "soundsArr" key)
-        return elem.soundsArr[0] == arr[0];
-        // Compares the first entry of each obj in soundBank to the first entry in the arr parameter
-    });
-    let sourcesArray = [];
-    for (let i = 0; i < arr.length; i++) {
-        // Loops through the array of strings
-        let source = document.getElementById(arr[i]);
-        // Selects the <audio> element that has that string as its id
-        if (!soundBank[soundBankIndex].sourceLoaded) {
-            // Check if the <audio> element has NOT already been conencted to the audio context
-            connectNodeToSource(source);
-            // Calls the function that connects the <audio> element to the audio context
-        }
-        sourcesArray.push(source);
-        // Push each <audio> element to an array
+  let soundBankIndex = soundBank.findIndex((elem) => {
+    // Finds the index of the soundBank object which the argument arr matches (by the "soundsArr" key)
+    return elem.soundsArr[0] == arr[0];
+    // Compares the first entry of each obj in soundBank to the first entry in the arr parameter
+  });
+  let sourcesArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    // Loops through the array of strings
+    let source = document.getElementById(arr[i]);
+    // Selects the <audio> element that has that string as its id
+    if (!soundBank[soundBankIndex].sourceLoaded) {
+      // Check if the <audio> element has NOT already been conencted to the audio context
+      connectNodeToSource(source);
+      // Calls the function that connects the <audio> element to the audio context
     }
-    soundBank[soundBankIndex].sourceLoaded = true;
-    // Finally, sets the loaded key in soundBank to true - so that the <audio> element doesn't get connected again.
-    return sourcesArray;
+    sourcesArray.push(source);
+    // Push each <audio> element to an array
+  }
+  soundBank[soundBankIndex].sourceLoaded = true;
+  // Finally, sets the loaded key in soundBank to true - so that the <audio> element doesn't get connected again.
+  return sourcesArray;
 }
 
 //sounds
