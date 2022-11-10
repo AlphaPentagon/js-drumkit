@@ -1,4 +1,4 @@
-import { audioCtx, volume, panning, analyser, delay, pitch } from './main.js';
+import { audioCtx, volume, panning, analyser, delay, source } from './main.js';
 
 export const nineties = [
     'kick',
@@ -35,17 +35,37 @@ function connectNodeToSource(s) {
     analyser.connect(delay);
     // delay.connect(pitch);
     console.log('S', s.src);
-
-    // test(s);
+    loadSample(s.src).then((sample) => playSample(sample));
 }
 
-function test(wav) {
-    console.log(typeof wav);
-    console.log(wav);
-    pitch.buffer = wav;
-    pitch.playbackRate.value = document.getElementById('slider2').value;
-    pitch.connect(audioCtx.destination);
+async function loadSample(url) {
+    return await fetch(url)
+        .then((response) => response.arrayBuffer())
+        .then((buffer) => audioCtx.decodeAudioData(buffer));
 }
+
+export const pitchSlider = document.getElementById('slider2');
+
+pitchSlider.addEventListener('input', (e) => {
+    console.log(e.target.value);
+    source.playbackRate.value = e.target.value;
+    console.log('PITCH VALUE', source.playbackRate.value);
+});
+
+function playSample(sample) {
+    console.log(sample);
+    source.buffer = sample;
+    source.playbackRate.value = pitchSlider.value;
+    source.connect(audioCtx.destination);
+}
+
+// function test(wav) {
+//     console.log(typeof wav);
+//     console.log(wav);
+//     pitch.buffer = wav;
+//     pitch.playbackRate.value = document.getElementById('slider2').value;
+//     pitch.connect(audioCtx.destination);
+// }
 
 export function loadSounds(arr) {
     let soundBankIndex = soundBank.findIndex((elem) => {
