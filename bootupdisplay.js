@@ -61,5 +61,6 @@ function bootborder(className) {
 
 function startupSound() {
     let startup = document.getElementById('startup');
+    startup.currentTime = 0;
     startup.play();
 }
