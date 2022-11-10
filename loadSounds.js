@@ -1,4 +1,4 @@
-import { audioCtx } from './main.js';
+import { audioCtx, connectEffectsToSources } from './audioEffects.js';
 
 export const nineties = [
     'kick',
@@ -29,7 +29,8 @@ export const soundBank = [
 ];
 function connectNodeToSource(s) {
     // This function is named appropriately - Only gets called by loadSounds if source (which is a <audio> element) is not already connected to the audio context.
-    audioCtx.createMediaElementSource(s)
+    connectEffectsToSources(audioCtx.createMediaElementSource(s));
+
     console.log('S', s);
     // loadSample(s.src).then((sample) => playSample(sample));
 }
