@@ -6,6 +6,7 @@ export const panning = audioCtx.createPanner();
 export const delay = audioCtx.createDelay(1);
 export const analyser = audioCtx.createAnalyser();
 export let pitchShift = 1;
+export let detuneShift = 0;
 
 export function connectEffectsToSources(source) {
     source.connect(volume);
@@ -23,6 +24,11 @@ const pitchSlider = document.getElementById('slider1');
 pitchSlider.addEventListener('input', (e) => {
     console.log('Pitch changed to: ', e.target.value);
     pitchShift = e.target.value;
+});
+const detuneSlider = document.getElementById('slider2');
+detuneSlider.addEventListener('input', (e) => {
+    console.log('Detune changed to: ', e.target.value);
+    detuneShift = e.target.value;
 });
 
 const panningKnob = document.getElementById('panning-knob');

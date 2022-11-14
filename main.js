@@ -7,6 +7,7 @@ import {
     analyser,
     audioCtx,
     pitchShift,
+    detuneShift,
 } from './audioEffects.js';
 
 // pitch.connect(audioCtx.destination);
@@ -123,7 +124,8 @@ function playSound(key) {
             case 'a':
                 currentDeck[3].currentTime = 0;
                 currentDeck[3].volume = 0.2;
-                currentDeck[3].playbackRate = pitchShift;
+                currentDeck[3].detune = -800;
+                console.log(currentDeck[3].src);
                 currentDeck[3].play();
                 activateBorder('.drum-pad-4');
                 break;

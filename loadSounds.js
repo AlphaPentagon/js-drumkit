@@ -74,6 +74,7 @@ export function loadSounds(arr) {
     for (let i = 0; i < arr.length; i++) {
         // Loops through the array of strings
         let source = document.getElementById(arr[i]);
+        console.log({ source });
         // Selects the <audio> element that has that string as its id
         if (!soundBank[soundBankIndex].sourceLoaded) {
             // Check if the <audio> element has NOT already been conencted to the audio context
