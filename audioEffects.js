@@ -5,6 +5,7 @@ export const volume = audioCtx.createGain();
 export const panning = audioCtx.createPanner();
 export const delay = audioCtx.createDelay(1);
 export const analyser = audioCtx.createAnalyser();
+export let pitchShift = 1;
 
 export function connectEffectsToSources(source) {
     source.connect(volume);
@@ -18,11 +19,12 @@ volumeKnob.addEventListener('input', (e) => {
     console.log('Volume changed to: ', e.target.value);
     volume.gain.value = e.target.value;
 });
-const delaySlider = document.getElementById('slider1');
-delaySlider.addEventListener('input', (e) => {
-    console.log('Delay changed to: ', e.target.value);
-    delay.delayTime.value = e.target.value;
+const pitchSlider = document.getElementById('slider1');
+pitchSlider.addEventListener('input', (e) => {
+    console.log('Pitch changed to: ', e.target.value);
+    pitchShift = e.target.value;
 });
+
 const panningKnob = document.getElementById('panning-knob');
 panningKnob.addEventListener('input', (e) => {
     console.log('Panning position changed to: ', e.target.value);
