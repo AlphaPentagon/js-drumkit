@@ -1,22 +1,12 @@
 import { loadSounds, soundBank } from './loadSounds.js';
 import { bootUpDisplay } from './bootupdisplay.js';
 import {
-    volume,
-    panning,
-    delay,
     analyser,
     audioCtx,
     pitchShift,
-    detuneShift,
+    distortionShift,
+    distortion,
 } from './audioEffects.js';
-
-// pitch.connect(audioCtx.destination);
-// pitchSlider.addEventListener('input', (e) => {
-//     console.log(e.target.value);
-//     pitch.detune.value = e.target.value;
-//     console.log('PITCH VALUE', pitch.detune.value);
-// });
-// export const source = audioCtx.createBufferSource();
 
 //ANALYSER
 //This is used to create the analyser
@@ -124,7 +114,7 @@ function playSound(key) {
             case 'a':
                 currentDeck[3].currentTime = 0;
                 currentDeck[3].volume = 0.2;
-                currentDeck[3].detune = -800;
+                currentDeck[3].playbackRate = pitchShift;
                 console.log(currentDeck[3].src);
                 currentDeck[3].play();
                 activateBorder('.drum-pad-4');
