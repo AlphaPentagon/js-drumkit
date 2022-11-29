@@ -1,4 +1,4 @@
-import { audioCtx, volume, panning, analyser, delay, source } from './main.js';
+import { audioCtx, connectEffectsToSources } from './audioEffects.js';
 
 export const nineties = [
     'kick',
@@ -29,35 +29,32 @@ export const soundBank = [
 ];
 function connectNodeToSource(s) {
     // This function is named appropriately - Only gets called by loadSounds if source (which is a <audio> element) is not already connected to the audio context.
-    audioCtx.createMediaElementSource(s).connect(volume);
-    volume.connect(panning);
-    panning.connect(analyser);
-    analyser.connect(delay);
-    // delay.connect(pitch);
-    console.log('S', s.src);
-    loadSample(s.src).then((sample) => playSample(sample));
+    connectEffectsToSources(audioCtx.createMediaElementSource(s));
+
+    console.log('S', s);
+    // loadSample(s.src).then((sample) => playSample(sample));
 }
 
-async function loadSample(url) {
-    return await fetch(url)
-        .then((response) => response.arrayBuffer())
-        .then((buffer) => audioCtx.decodeAudioData(buffer));
-}
+// async function loadSample(url) {
+//     return await fetch(url)
+//         .then((response) => response.arrayBuffer())
+//         .then((buffer) => audioCtx.decodeAudioData(buffer));
+// }
 
-export const pitchSlider = document.getElementById('slider2');
+// export const pitchSlider = document.getElementById('slider2');
 
-pitchSlider.addEventListener('input', (e) => {
-    console.log(e.target.value);
-    source.playbackRate.value = e.target.value;
-    console.log('PITCH VALUE', source.playbackRate.value);
-});
+// pitchSlider.addEventListener('input', (e) => {
+//     console.log(e.target.value);
+//     source.playbackRate.value = e.target.value;
+//     console.log('PITCH VALUE', source.playbackRate.value);
+// });
 
-function playSample(sample) {
-    console.log(sample);
-    source.buffer = sample;
-    source.playbackRate.value = pitchSlider.value;
-    source.connect(audioCtx.destination);
-}
+// function playSample(sample) {
+//     console.log(sample);
+//     source.buffer = sample;
+//     source.playbackRate.value = pitchSlider.value;
+//     source.connect(audioCtx.destination);
+// }
 
 // function test(wav) {
 //     console.log(typeof wav);
@@ -77,6 +74,7 @@ export function loadSounds(arr) {
     for (let i = 0; i < arr.length; i++) {
         // Loops through the array of strings
         let source = document.getElementById(arr[i]);
+        console.log({ source });
         // Selects the <audio> element that has that string as its id
         if (!soundBank[soundBankIndex].sourceLoaded) {
             // Check if the <audio> element has NOT already been conencted to the audio context

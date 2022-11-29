@@ -1,50 +1,14 @@
-import { loadSounds, nineties, breakbeat, soundBank } from './loadSounds.js';
+import { loadSounds, soundBank } from './loadSounds.js';
 import { bootUpDisplay } from './bootupdisplay.js';
-
-//instance of Audio API
-export const audioCtx = new AudioContext();
-
-//VOLUME
-//this is used to alter the volume
-export const volume = audioCtx.createGain();
-//this connects the volume effect to the output (speakers)
-volume.connect(audioCtx.destination);
-//link volume knob to volume effect
-const volumeKnob = document.getElementById('volume-knob');
-volumeKnob.addEventListener('input', (e) => {
-    console.log(e.target.value);
-    volume.gain.value = e.target.value;
-});
-
-//PANNING
-//this is used to create the panning
-export const panning = audioCtx.createPanner();
-//this connects the panning effect to the output (speakers)
-panning.connect(audioCtx.destination);
-
-//DELAY
-//this is used to create the reverb
-export const delay = audioCtx.createDelay(1);
-delay.connect(audioCtx.destination);
-const delaySlider = document.getElementById('slider1');
-delaySlider.addEventListener('input', (e) => {
-    delay.delayTime.value = e.target.value;
-    console.log(delay.delayTime);
-});
-
-//link panning knob to panning effect
-const panningKnob = document.getElementById('panning-knob');
-panningKnob.addEventListener('input', (e) => {
-    console.log(e.target.value);
-    panning.positionX.value = e.target.value;
-});
-// Double click to reset pan to neutral
-panningKnob.addEventListener('dblclick', (e) => {
-    e.target.value = 0;
-    panning.positionX.value = e.target.value;
-});
-
-//PITCH
+import {
+    volume,
+    panning,
+    delay,
+    analyser,
+    audioCtx,
+    pitchShift,
+    detuneShift,
+} from './audioEffects.js';
 
 // pitch.connect(audioCtx.destination);
 // pitchSlider.addEventListener('input', (e) => {
@@ -52,11 +16,10 @@ panningKnob.addEventListener('dblclick', (e) => {
 //     pitch.detune.value = e.target.value;
 //     console.log('PITCH VALUE', pitch.detune.value);
 // });
-export const source = audioCtx.createBufferSource();
+// export const source = audioCtx.createBufferSource();
 
 //ANALYSER
 //This is used to create the analyser
-export const analyser = audioCtx.createAnalyser();
 analyser.fftSize = 2048;
 const bufferLength = analyser.frequencyBinCount;
 const dataArray = new Uint8Array(bufferLength);
@@ -66,7 +29,7 @@ const canvas = document.getElementById('oscilloscope');
 const canvasCtx = canvas.getContext('2d');
 let JamOn = false;
 
-let currentDeck = loadSounds(nineties);
+let currentDeck = loadSounds(soundBank[0].soundsArr);
 function draw() {
     let colourArr = ['#F00', '#f80', '#ff0', '#0F0', '#0ff', '#00F', '#94f'];
     if (JamOn) {
@@ -134,56 +97,67 @@ export function activateBorder(className) {
 
 function playSound(key) {
     // Plays the sound corresponding to the specified key
+    console.log(key);
+    console.log(currentDeck);
     if (JamOn) {
         switch (key) {
             case 'q':
                 // console.log(currentDeck[0]);
                 currentDeck[0].currentTime = 0;
-                // currentDeck[0].src.playbackRate.value = 0.5;
+                currentDeck[0].playbackRate = pitchShift;
                 currentDeck[0].play();
                 activateBorder('.drum-pad-1');
                 break;
             case 'w':
                 currentDeck[1].currentTime = 0;
+                currentDeck[1].playbackRate = pitchShift;
                 currentDeck[1].play();
                 activateBorder('.drum-pad-2');
                 break;
             case 'e':
                 currentDeck[2].currentTime = 0;
                 currentDeck[2].volume = 0.3;
+                currentDeck[2].playbackRate = pitchShift;
                 currentDeck[2].play();
                 activateBorder('.drum-pad-3');
                 break;
             case 'a':
                 currentDeck[3].currentTime = 0;
                 currentDeck[3].volume = 0.2;
+                currentDeck[3].detune = -800;
+                console.log(currentDeck[3].src);
                 currentDeck[3].play();
                 activateBorder('.drum-pad-4');
                 break;
             case 's':
                 currentDeck[4].currentTime = 0;
+                currentDeck[4].playbackRate = pitchShift;
                 currentDeck[4].play();
                 activateBorder('.drum-pad-5');
                 break;
             case 'd':
                 currentDeck[5].currentTime = 0;
                 currentDeck[5].volume = 0.4;
+                currentDeck[5].playbackRate = pitchShift;
                 currentDeck[5].play();
                 activateBorder('.drum-pad-6');
                 break;
             case 'z':
                 currentDeck[6].currentTime = 0;
+                currentDeck[6].playbackRate = pitchShift;
                 currentDeck[6].play();
                 activateBorder('.drum-pad-7');
                 break;
             case 'x':
                 currentDeck[7].currentTime = 0;
+                currentDeck[7].playbackRate = pitchShift;
                 currentDeck[7].play();
                 activateBorder('.drum-pad-8');
                 break;
             case 'c':
                 currentDeck[8].currentTime = 0;
                 currentDeck[8].volume = 0.3;
+                currentDeck[8].playbackRate = pitchShift;
                 currentDeck[8].play();
                 activateBorder('.drum-pad-9');
                 break;

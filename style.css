@@ -1,285 +1,285 @@
 :root {
-  --screen-bg-color: rgb(3, 41, 5);
-  --screen-text-color: rgb(64, 233, 21);
-  --knob-color: #e2e1e1;
-  --JamDeck-pink: #ff00de;
-  --hover-color: greenyellow;
-  --drum-slider-grove-color: #9c9c9c;
-  --beat-led-color: rgb(0, 87, 14);
-  --beat-led-on-color: rgb(119, 216, 9);
-  --beat-led-on-centre-color: rgb(183, 253, 102);
-  --led-shadow: rgb(51, 50, 50);
-  --power-led-color: rgb(121, 4, 4);
-  --power-led-on-color: red;
-  --power-led-center-color: rgb(255, 71, 47);
+    --screen-bg-color: rgb(3, 41, 5);
+    --screen-text-color: rgb(64, 233, 21);
+    --knob-color: #e2e1e1;
+    --JamDeck-pink: #ff00de;
+    --hover-color: greenyellow;
+    --drum-slider-grove-color: #9c9c9c;
+    --beat-led-color: rgb(0, 87, 14);
+    --beat-led-on-color: rgb(119, 216, 9);
+    --beat-led-on-centre-color: rgb(183, 253, 102);
+    --led-shadow: rgb(51, 50, 50);
+    --power-led-color: rgb(121, 4, 4);
+    --power-led-on-color: red;
+    --power-led-center-color: rgb(255, 71, 47);
 }
 @font-face {
-  font-family: 'custom-main';
-  src: url('assets/Impact\ Label.ttf');
+    font-family: 'custom-main';
+    src: url('assets/Impact\ Label.ttf');
 }
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
 }
 
 /*Whole JamDeck*/
 .drum-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 30rem;
-  padding: 4rem;
-  border-radius: 50px;
-  gap: 1rem;
-  background-image: url(./Images/walnut.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+    padding: 4rem;
+    border-radius: 50px;
+    gap: 1rem;
+    background-image: url(./Images/walnut.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
 
 /*WHAT DOES THIS DO?*/
 #title-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 /*Title*/
 #jamdeck {
-  font-family: 'Fredoka One', cursive;
-  margin-block: 1.5rem;
-  color: white;
-  margin-left: 3.3rem;
+    font-family: 'Fredoka One', cursive;
+    margin-block: 1.5rem;
+    color: white;
+    margin-left: 3.3rem;
 }
 #title-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .jamdeck-on {
-  text-shadow: 0 0 10px var(--knob-color), 0 0 20px var(--knob-color),
-    0 0 30px var(--knob-color), 0 0 26px var(--JamDeck-pink),
-    0 0 46px var(--JamDeck-pink), 0 0 56px var(--JamDeck-pink),
-    0 0 66px var(--JamDeck-pink), 0 0 100px var(--JamDeck-pink);
-  filter: drop-shadow(3px 2px 2px var(--knob-color));
+    text-shadow: 0 0 10px var(--knob-color), 0 0 20px var(--knob-color),
+        0 0 30px var(--knob-color), 0 0 26px var(--JamDeck-pink),
+        0 0 46px var(--JamDeck-pink), 0 0 56px var(--JamDeck-pink),
+        0 0 66px var(--JamDeck-pink), 0 0 100px var(--JamDeck-pink);
+    filter: drop-shadow(3px 2px 2px var(--knob-color));
 }
 
 #dropdown {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  height: 2rem;
-  width: 8rem;
-  font-size: 1.5rem;
-  text-indent: 0.5rem;
-  font-family: 'VT323', monospace;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 2rem;
+    width: 8rem;
+    font-size: 1.5rem;
+    text-indent: 0.5rem;
+    font-family: 'VT323', monospace;
 }
 .d-turned-off {
-  color: black;
-  background-color: black;
+    color: black;
+    background-color: black;
 }
 .d-turned-on {
-  color: var(--screen-text-color);
-  background-color: var(--screen-bg-color);
+    color: var(--screen-text-color);
+    background-color: var(--screen-bg-color);
 }
 /*LED light*/
 #on-LED {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  border: 0.5px solid black;
-  margin-left: auto;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 0.5px solid black;
+    margin-left: auto;
 }
 .turned-off {
-  background-color: var(--power-led-color);
-  filter: drop-shadow(1px 1px 1px var(--led-shadow));
+    background-color: var(--power-led-color);
+    filter: drop-shadow(1px 1px 1px var(--led-shadow));
 }
 .turned-on {
-  background: radial-gradient(
-    var(--power-led-center-color),
-    var(--power-led-on-color)
-  );
-  filter: drop-shadow(0px 0px 5px var(--power-led-on-color));
+    background: radial-gradient(
+        var(--power-led-center-color),
+        var(--power-led-on-color)
+    );
+    filter: drop-shadow(0px 0px 5px var(--power-led-on-color));
 }
 
 /*container for everything but the title and led*/
 #controls {
-  display: flex;
-  margin-bottom: 1rem;
+    display: flex;
+    margin-bottom: 1rem;
 }
 .drum-element,
 .drum-container {
-  border: 2px solid black;
+    border: 2px solid black;
 }
 
 /*Sets up the grid for drum pads*/
 .drum-pad-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: min(90%, 900px);
-  border-radius: 1rem;
-  gap: 1rem;
-  height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: min(90%, 900px);
+    border-radius: 1rem;
+    gap: 1rem;
+    height: 100%;
 }
 
 /*drum pad*/
 .drum-pad {
-  font-family: 'Fredoka One', cursive;
-  border-radius: 1rem;
-  height: 6rem;
-  width: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--knob-color);
-  pointer-events: none;
-  /*removes the ability to highlight letter on pad*/
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+    font-family: 'Fredoka One', cursive;
+    border-radius: 1rem;
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--knob-color);
+    pointer-events: none;
+    /*removes the ability to highlight letter on pad*/
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 .active-pad {
-  pointer-events: auto;
+    pointer-events: auto;
 }
 .drum-pad:not(.pressed):hover,
 .boot-display {
-  box-sizing: border-box;
-  border: 2px solid white;
-  box-shadow: 0 0 5px var(--knob-color), 0 0 6px var(--knob-color),
-    0 0 10px var(--knob-color), 0 0 8px var(--hover-color),
-    0 0 14px var(--hover-color), 0 0 80px var(--hover-color),
-    0 0 20px var(--hover-color), 0 0 35px var(--hover-color);
+    box-sizing: border-box;
+    border: 2px solid white;
+    box-shadow: 0 0 5px var(--knob-color), 0 0 6px var(--knob-color),
+        0 0 10px var(--knob-color), 0 0 8px var(--hover-color),
+        0 0 14px var(--hover-color), 0 0 80px var(--hover-color),
+        0 0 20px var(--hover-color), 0 0 35px var(--hover-color);
 }
 .pressed {
-  border: 0.5px solid white;
-  box-shadow: 0 0 5px #fff, 0 0 6px #fff, 0 0 10px #fff,
-    0 0 8px var(--JamDeck-pink), 0 0 14px var(--JamDeck-pink),
-    0 0 80px var(--JamDeck-pink), 0 0 20px var(--JamDeck-pink),
-    0 0 35px var(--JamDeck-pink);
+    border: 0.5px solid white;
+    box-shadow: 0 0 5px #fff, 0 0 6px #fff, 0 0 10px #fff,
+        0 0 8px var(--JamDeck-pink), 0 0 14px var(--JamDeck-pink),
+        0 0 80px var(--JamDeck-pink), 0 0 20px var(--JamDeck-pink),
+        0 0 35px var(--JamDeck-pink);
 }
 
 /*container for the oscilloscope, slier and knob containers*/
 .interface-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
 }
 
 /*oscilloscope*/
 #oscilloscope {
-  filter: drop-shadow(0px 0px 3px var(--knob-color));
+    filter: drop-shadow(0px 0px 3px var(--knob-color));
 }
 #canvas-outline {
-  width: 310px;
-  height: 160px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  filter: drop-shadow(2px 2px 2px var(--knob-color) 7e);
+    width: 310px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    filter: drop-shadow(2px 2px 2px var(--knob-color) 7e);
 }
 
 /*container for volume and pan dials*/
 .drum-buttons-container {
-  display: flex;
-  height: 100%;
+    display: flex;
+    height: 100%;
 }
 
 /*container for the sliders*/
 .slider-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
 }
 
 /*container for volume and pan dials and on/off switch*/
 #dial-container {
-  display: flex;
-  justify-content: space-between;
-  width: 70%;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
 }
 
 /*on/off switch alignment*/
 .input-switch {
-  align-self: flex-end;
+    align-self: flex-end;
 }
 
 /*containers for the volume and pan dials*/
 #knob-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 /*volume and pan dials*/
 .drum-knob-1,
 .drum-knob-2 {
-  filter: drop-shadow(2px 2px 2px black);
-  align-self: flex-start;
+    filter: drop-shadow(2px 2px 2px black);
+    align-self: flex-start;
 }
 .drum-knob-2 {
-  height: 100%;
+    height: 100%;
 }
 
 /*both sliders*/
 .drum-slider-1,
 .drum-slider-2 {
-  transform: rotate(270deg);
+    transform: rotate(270deg);
 }
 #slider1,
 #slider2 {
-  -webkit-appearance: none; /* Override default CSS styles */
-  appearance: none;
-  background: var(--drum-slider-grove-color);
-  height: 20px;
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    background: var(--drum-slider-grove-color);
+    height: 20px;
 }
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 #slider1::-webkit-slider-thumb,
 #slider2::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 60px; /* Slider handle height */
-  background: var(--knob-color); /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border: 1px solid black;
-  border-radius: 0.4rem;
-  filter: drop-shadow(-2px 2px 2px black);
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 60px; /* Slider handle height */
+    background: var(--knob-color); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    filter: drop-shadow(-2px 2px 2px black);
 }
 /* All the same stuff for Firefox */
 #slider1::-moz-range-thumb,
 #slider2::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 60px; /* Slider handle height */
-  background: var(--knob-color); /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border: 1px solid black;
-  border-radius: 0.4rem;
-  filter: drop-shadow(2px 2px 2px black);
+    width: 25px; /* Set a specific slider handle width */
+    height: 60px; /* Slider handle height */
+    background: var(--knob-color); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    filter: drop-shadow(2px 2px 2px black);
 }
 /* All the same stuff for IE */
 #slider1::-ms-thumb,
 #slider2::-ms-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 60px; /* Slider handle height */
-  background: var(--knob-color); /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border: 1px solid black;
-  border-radius: 0.4rem;
-  filter: drop-shadow(2px 2px 2px black);
+    width: 25px; /* Set a specific slider handle width */
+    height: 60px; /* Slider handle height */
+    background: var(--knob-color); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    filter: drop-shadow(2px 2px 2px black);
 }
 
 /*removes focus for user */
@@ -288,55 +288,61 @@ body {
 #slider2:focus,
 #on-off-switch:focus,
 #beats-knob {
-  outline: 0;
+    outline: 0;
 }
 
 #beats-knob {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  margin-top: -1rem;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin-top: -1rem;
 }
 
 #beats-knob::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  cursor: pointer; /* Cursor on hover */
-  border: 1px solid black;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid var(--knob-color);
-  filter: drop-shadow(-2px 2px 2px black);
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    cursor: pointer; /* Cursor on hover */
+    border: 1px solid black;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--knob-color);
+    filter: drop-shadow(-2px 2px 2px black);
 }
 
 /*holding section for beat leds*/
 .ticks {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 1rem;
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
 }
 /*beat LED*/
 .beat-LED {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  border: 0.5px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 0.5px solid black;
 }
 .beat-turned-off {
-  background-color: var(--beat-led-color);
-  filter: drop-shadow(1px 1px 1px var(--led-shadow));
+    background-color: var(--beat-led-color);
+    filter: drop-shadow(1px 1px 1px var(--led-shadow));
 }
 .beat-turned-on {
-  filter: drop-shadow(0px 0px 5px var(--beat-led-on-color));
-  background: radial-gradient(
-    var(--beat-led-on-centre-color),
-    var(--beat-led-on-color)
-  );
+    filter: drop-shadow(0px 0px 5px var(--beat-led-on-color));
+    background: radial-gradient(
+        var(--beat-led-on-centre-color),
+        var(--beat-led-on-color)
+    );
+}
+
+@media only screen and (max-width: 900px) {
+    body {
+        transform: rotate(90deg);
+    }
 }
